@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "MyApp\\": "src"
+        }
+    },
+    "require": {
+        "cboden/ratchet": "^0.4",
+        "cradlephp/handlebars": "^2.3",
+        "symfony/yaml": "*",
+        "symfony/filesystem": "*"
+    }
+}

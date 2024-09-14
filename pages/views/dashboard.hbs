@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/anon/css/dashboard.css">
+</head>
+<body>
+{{#if isUser}}
+
+
+  <div id="dashBod">
+    <div id =  "idCon">    
+      <h1>
+	<i class ="fas fa-user" ></i>
+        
+        {{id}}
+        
+        </h1>
+  </div>
+
+
+    <div class="msglnk">
+      <p class="lnkMsg">Share this link to receive anonymous messages.</p>
+      <div class="linkCon">
+        <span><a class="copy" href="{{msgURL}}">{{msgURL}}</a></span>
+        <span class="c">copy</span>
+      </div>
+    </div>
+    <div class="msglnk">
+      <p class="lnkMsg">Share this with your friends so they can view messages sent to you.</p>
+      <div class="linkCon">
+        <span><a class="copy" href="{{viewURL}}">{{viewURL}}</a></span>
+        <span class="c">copy</span>
+      </div>
+    </div>
+  <nav>
+    <p><a href="/anon/pages/logout"><b>Logout</b></a> </p>
+
+  </nav>
+  </div>
+{{/if}}
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const copyElements = document.querySelectorAll('.c');
+    copyElements.forEach(function(element) {
+      element.addEventListener('click', function() {
+        const text = element.previousElementSibling.textContent;
+        navigator.clipboard.writeText(text).then(function() {
+          console.log('Text copied to clipboard');
+        });
+      });
+    });
+  });
+
+ const logout = ()=>{
+   const xhr = new XMLHttpRequest();
+   xhr.onload= ()=>{
+    if(xhr.status === 200){
+      console.log (this.responseText)
+   }
+   }
+   xhr.open("GET","/anon/pages/logout")
+   xhr.send()
+  }
+</script>
+</html>

@@ -1,0 +1,36 @@
+ErrorDocument 404  /anon/404.php
+ErrorDocument 400  /anon/400.php
+ErrorDocument 403 /anon/400.php
+
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteRule ^signup /anon/pages/signup.php
+RewriteRule ^login /anon/pages/login.php
+RewriteRule ^msg /anon/pages/message.php
+RewriteRule ^messages /anon/pages/messages.php
+
+<FilesMatch "\.*">
+    Header set Cache-Control "no-cache, no-store,must-revalidate"
+ #   Header set Pragma "no-cache"
+#Header set Expires 0
+</FilesMatch>
+
+<FilesMatch server.php>
+Require all denied
+</FilesMatch>
+
+ <FilesMatch socket.php>
+Require all denied
+ </FilesMatch>
+
+
+
+
+
+
+
+

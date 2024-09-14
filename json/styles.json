@@ -1,0 +1,14 @@
+{
+    "reactclr":{
+        "FUNNY":"yellow",
+        "SAD":"grey",
+        "BORING":"#f5deb3",
+        "CRAZY" :"#c7b8ea"
+    },
+    "fontawesome":{
+        "FUNNY":"fas fa-face-grin-tears fa-2x",
+        "SAD":"fas fa-frown fa-2x",
+        "BORING":"fas fa-meh fa-2x",
+        "CRAZY" :"fas fa-angry fa-2x"
+    }
+}

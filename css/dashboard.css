@@ -1,0 +1,102 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  #dashBod {
+    max-width: 800px;
+    min-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+background-size: 20%;
+background-position: center;
+background-repeat:space;
+color: #f0f0f0;
+
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+   
+  }
+  
+  .msglnk {
+    margin-bottom: 20px;
+    text-align: center;
+
+
+  }
+  
+  .lnkMsg {
+    font-size: 16px;
+    color: #333;
+
+
+  }
+  
+  .linkCon {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    border:2px solid grey;
+    padding-left: 10px;
+    font-size: 80%;
+
+  }
+  
+  .linkCon span:first-child {
+    width: 85%;
+    max-width:800px ;
+    margin-right: 10px;
+    text-align: center;
+    display: inline;   
+  
+
+  }
+  
+  .copy {
+    text-decoration: none;
+    color: #337ab7;
+  }
+  
+  .copy:hover {
+    color: #23527c;
+  }
+  
+  .c {
+    cursor: pointer;
+    color: #337ab7;
+  }
+  
+  .c:hover {
+    color: #23527c;
+  }
+  #idCon{
+    display: flexbox;
+    justify-content: center;
+   
+  }
+  nav{
+    background-color: inherit;
+  text-align: right;
+  }
+  nav p a {
+    text-decoration: none;
+    color:rgb(19, 17, 14);
+  
+  }           

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+     
+        <div id="head">
+             <p><h1> Login <i class="bi bi-smile"></i>
+            </h1></p>
+        </div>
+        <form method="POST" action="/anon/login">
+            <div class="form-inp">
+                <p>Username |<i class="fas fa-user"></i> </p>
+      
+
+                <input type="text" id="username" name="name" required>
+            </div>
+            <div class="form-inp">
+     
+                <p>Password <i class="fas fa-lock"></i> </p>
+                <input  oninput=passVal(this) type="password" id="password" name="pword" required>
+            </div>
+<div id="chkbox">
+    <span>Remember me</span>
+      <i class="fas fa-bookmark"></i> 
+	  <input class="form-check-input" type="checkbox" name="remember" value="0" id="flexCheckChecked" >
+ 
+</div>
+            <button type="submit">
+
+				Login
+      <i class="fas fa-sign-in-alt"></i> 
+				
+				</button>
+        </form>
+        <div id="messgCon">
+            {{#if isUser}}
+                <p>You have successfully logged in</p>
+                <a href="dashboard.php" class="btn btn-primary">Head to dashboard</a>
+            {{else}}
+                {{#if post}}
+                  
+				  
+				  ||<hr>||
+                {{else}}
+                    <p  class = {{class}}>{{message}}</p>
+                {{/if}}	
+			<div>
+
+				<p>No account? <a href="signup">Signup now</a>      <i class="fas fa-arrow-right" aria-hidden="true"></i> </p>
+			</div>
+            {{/if}}
+            </div>
+
+
+    </div>
+</body>
+<script>
+
+ </script>
+</html>
