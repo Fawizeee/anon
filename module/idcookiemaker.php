@@ -1,4 +1,5 @@
 <?php
+use Symfony\Component\Routing\Attribute\Route;
 
 class idcookie{
     public $number;
@@ -25,4 +26,3 @@ $this->letter = ["a","b","d","e","g","h","i","k","l","o"];
  }
 }
 
-//echo $newcookie->makeidcookie();
