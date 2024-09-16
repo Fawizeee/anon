@@ -42,31 +42,32 @@ class Login {
 
     public function authenticate(mysqli_result $result,array $credentials,Password_mod|null $password_mod){
         
-        
+        if($password_mod!==null){
         if (empty($credentials["name"]) || empty($credentials["password"])) {
-            return ["bool" => false, "msg" => "Please fill in all fields"];
+            return ["isUser" => false, "msg" => "Please fill in all fields","row"=>[]];
         }
-
+}
         try{
         if ($result->num_rows === 0) {
-            return ["bool" => false, "msg" => "User does not exist. Sign up!"];
+            return ["isUser" => false, "msg" => "User does not exist. Sign up!","row"=>[]];
         }
 
            $row = $result->fetch_assoc();
+
+           var_dump($credentials);
            if($password_mod!=null){
-         $verified_password = $this->password_mod->verifyPassword($row["password"],$credentials["password"]);
+         $verified_password = $password_mod->verifyPassword($row["password"],$credentials["password"]);
         if ($verified_password) {
             $_SESSION["loggedin"] = true;
-            return ["bool" => true, "msg" => "", "row" => $row];
+            return ["isUser" => true, "msg" => "", "row" => $row];
         } else {
-            return ["bool" => false, "msg" => "Wrong password",$row=>[]];
+            return ["isUser" => false, "msg" => "Wrong password","row"=>[]];
         }
-   
-}     elseif($row["id"]==$_COOKIE["id"]){
-    return ["bool" => true, "msg" => "", "row" => $row];
+}     elseif($row["id"]==$_COOKIE["userid"]){
+    return ["isUser" => true, "msg" => "", "row" => $row];
         }
     } catch (mysqli_sql_exception $e) {
-        return ["bool" => false, "msg" => "Database error: " . $e->getMessage()];
+        return ["isUser" => false, "msg" => "Database error: " . $e->getMessage(),"row"=>[]];
     } finally {
        
     }
@@ -87,8 +88,8 @@ class Login {
          
     }
     public function autologin(array $credentials){
-       $result = $this->query($this->db,$credentials["key"],$this->Coloumn["remember"]);
-       $authenticated = $this->authenticate($result,$credentials["name"],null);
+       $result = $this->query($this->db,$credentials["remember"],$this->Coloumn["remember"]);
+       $authenticated = $this->authenticate($result,$credentials,null);
        return $authenticated;
        
     }

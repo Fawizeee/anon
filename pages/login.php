@@ -1,6 +1,6 @@
    
 <?php
-
+  session_start();
   // INCLUDE SQLITE CONNECTION
   require("../module/connection.php");
   //INCLUDE COOKIE MAKER AND INITIALIZER
@@ -10,25 +10,44 @@
   require("../module/autologin.php");
 require("../module/password.php");
 include "../module/handlebarsTemplate.php";
+require "../module/updateUserloginInfo.php";
 
-$handlebars = new HandlebarTemplate(templateString: file_get_contents(filename: "views/login.hbs"));
+$loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "views/login.hbs"));
+$logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"views/logout.hbs"));
   
-
+var_dump($_SESSION);
   $db = new DbConn();
   $db = $db->db;
   $password_mod = new Password_mod();
   try{
-  
+      //  var_dump($_COOKIE);exit;
         // autologin if possible
-        if(isset($_COOKIE))
+        if(isset($_SESSION)&&isset($_SESSION["loggedin"])){
+          echo $logoutPage->render([]);
+          exit;
+        }
+        if(isset($_COOKIE)&&!isset($_SESSION["loggedin"]))
         {      
             if(isset($_COOKIE["remember"]))
             { 
+              
                 $autologin = new Login($db);
-                $_SESSION["autologin"] = true;
-                // $cookie_mod->Make_ckie(["autologin"=>"yes"]);
-                 [$canlogin,$message,$row] =  $autologin->autologin($_COOKIE);
-                 if($canlogin){ header(header: "location:/anon/messages?name=$row[username]"); exit;}
+                  $login =  $autologin->autologin($_COOKIE);
+                  // var_dump($login);exit;
+                  // var_dump($login);exit;
+
+                  $canlogin = $login["isUser"];
+                  $message = $login["msg"];
+                  $row = $login["row"];
+                 
+                 if($canlogin){ 
+                  $cookie_mod->Make_ckie(["userid"=>$row["id"]]);
+                  $isUser = true;
+                  $name = $row["username"];
+                  $_SESSION["loggedin"] = true;
+                  $_SESSION["name"] = $name; 
+                  
+                  header(header: "location:/anon/messages?name=$row[username]"); exit;}
                  
             }
             elseif(isset($_SESSION["checked"])&&$_SESSION["checked"]=="no")
@@ -65,7 +84,6 @@ catch(Exception $e){$message = $e->getMessage();}
     //   INITIALIZES DB CONNECTION
     
     try{
-      session_start();
         // IF THERES A POST REQUEST CONTAINING NAME AND PASSWORD
      
         if(isset($_POST["name"]) && isset($_POST["pword"]) ){
@@ -84,47 +102,37 @@ catch(Exception $e){$message = $e->getMessage();}
         //DATABASE CODE FOR QUERY
         $login = new login($db);
 
-     [ $canlogin,$message,$row]= $login->login(["name"=>$name,"password"=>$pword],$password_mod)["bool"];
-      // $msg =  $login->login()["msg"];
+     $login = $login->login(["name"=>$name,"password"=>$pword],$password_mod);
+       $msg =  $login["msg"];
+       $row = $login["row"];
+       $canlogin = $login["isUser"];
       // $row = isset($login->login()["row"]) ?$login->login()["row"]:false;
             //IF PASSWORD IS CORRECT LOGIN
-          
           if($canlogin){
                 $isUser = true;
-              
                 $_SESSION["loggedin"] = true;
                 $_SESSION["name"] = $name;  
-          
-            
-               $cookie_mod->Make_ckie(cookie: ["remember"=>uniqid()]);
-           
-
-              //IF THERES NO ID CREATE AND INSERT IDFOR THE USER
-           if (!$row["id"]){
-
-    $user_ckie = $newcookie->makeidcookie();
-     $cookie_mod->Make_ckie(["userid"=> $user_ckie]);
-    $_SESSION["userid"] = $user_ckie;
-    $stmt = $db->prepare( query: "UPDATE INFO SET ID =? ,REMEMBER=? WHERE USERNAME =?");
-    $stmt->bind_Param("sss",$user_ckie,$rem_id,$name);
-  $result  = $stmt->execute();
-    
-    if ($result){
+        
+          $updateInfo = new updateUserLoginInfo($db,$cookie_mod,$rem,$row["id"],$row["username"]);
+           $updated = $updateInfo->update();
+    if ($updateInfo){
 
        $saved = true;
        $class = "success";
 
     }
 
-            }
+            
             //IF THERES AN ID ALREADY PUT IN IT IN THE COOKIE
-            else if($row["id"])
+            if($row["id"])
             { 
                 //  $cookie_mod->make_ckie(["userid"=> $row["id"]]); 
                  $_SESSION["userid"] =  $row["id"];
+                  $cookie_mod->Make_ckie(["userid"=> $row['id']]);
+
                  $class = "success";
                   
-                 $user_ckie=$row["username"];var_dump($user_ckie);
+                 $user_ckie=$row["username"];var_dump($user_ckie,$canlogin);
                             }
                    
         }
@@ -142,13 +150,13 @@ catch(Exception $e){$message = $e->getMessage();}
           
         }
         finally{ 
-            
+
             if ($class=="success"){ header("location:/anon/messages?name=$name");  exit; }
           
          $data = ["message"=>$message ,"class"=>$class,"isUser"=>$isUser ,"post"=>!$post];
 
-session_write_close(); ;var_dump($_SESSION,$rem);
-echo $handlebars->render($data);
+session_write_close(); 
+echo $loginPage->render($data);
 
 
 
