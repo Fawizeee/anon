@@ -1,6 +1,7 @@
 body {
 	
-	background-color: #1F2937;
+	background-image: linear-gradient(to left top ,black,#414868);
+
 	color: #D1D5DB;
 	font-family: Arial, sans-serif;
 
@@ -20,7 +21,8 @@ body {
   .messages {
 	margin: auto;
 
-	background-color: #2D3748;
+	background-image: linear-gradient(to top,black ,#414868);
+
 	border-radius: 5px;
 	padding: 20px;
 	width: 85%;
@@ -32,7 +34,7 @@ body {
 	margin-bottom: 5%;
 	font-size: 20px;
 	text-align: center;	
-	border: 2px solid yellow;
+	border: 2px solid black;
 
   }
   

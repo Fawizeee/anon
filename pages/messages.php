@@ -12,6 +12,7 @@ $ReactiontemplateString = file_get_contents("views/reaction.hbs");
 $dashboardTemplateString = file_get_contents("views/dashboard.hbs");
 $handlebars->registerPartials("dashboard",$dashboardTemplateString);
 $handlebars->registerPartials("reaction",$ReactiontemplateString);
+$handlebars->registerHelpers("format");
 
 session_start();
 

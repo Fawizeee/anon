@@ -4,7 +4,7 @@ require dirname(__DIR__) . '\vendor\autoload.php';
 class HandlebarTemplate {
     public $templateString;
     public $handlebars;
-    public $data;
+    public $text;
    function __construct( String $templateString) {
     $this->handlebars =new Handlebars();
     $this->templateString = $templateString;
@@ -20,5 +20,11 @@ class HandlebarTemplate {
     }
   function  registerPartials($name,$template){
     $this->handlebars->registerPartial($name,$template); 
+  }
+  function registerHelpers(string $helper){
+     
+   $this->handlebars->registerHelper($helper,function($text){
+        return nl2br($text);
+    });
   }
 }
