@@ -24,7 +24,7 @@ class HandlebarTemplate {
   function registerHelpers(string $helper){
      
    $this->handlebars->registerHelper($helper,function($text){
-        return nl2br($text);
+        return nl2br(htmlspecialchars($text));
     });
   }
 }

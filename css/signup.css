@@ -5,7 +5,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom ,#414868,black);
+  background-image: linear-gradient(to bottom  right,  #f3dc09, rgb(221, 62, 14)) ; 
+
 
   background-repeat: repeat;
 }
@@ -15,7 +16,7 @@ body {
   height: 90%;
   max-width: 700px;
   max-height: 700px;
-  background-color:#465181;
+	background-image: transparent; 
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -29,11 +30,11 @@ body {
 #head {
   display: grid;
   place-items: center;
-  background-color: #555;
+  background-image: url("/anon/pic/anon.png");
+	background: transparent; 
   color: #fff;
   height: 100px;
   width: 100%;
-  background-color:#2e3347;
   border-radius :15px 15px 0 0;
 
 }
@@ -48,11 +49,13 @@ input[type="text"], input[type="password"] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid #666;
+  border: none;
+  border-bottom: 2px solid #555 ;
   border-radius: 4px;
   height: 100%;
-  background-color: #555;
+  background-color: transparent;
   color: #fff;
+  outline: none;
 }
 
 button {
@@ -80,10 +83,10 @@ background-color: #222e61;
   width: 90%;
   height: fit-content;
   max-width: 500px;
-  border: 5px solid #333;
+  
   border-radius: 10px;
   height: fit-content;
-    background-color:#2e3347;
+    background-color:transparent;
 
 }
 
@@ -110,11 +113,13 @@ color:antiquewhite;
 
 #messgCon a {
 text-decoration: none;
-color: #4CAF50;
+color:rgb(36, 36, 94);
+
 }
 
 #messgCon a:hover {
-color: #3e8e41;
+  color: rgb(11, 11, 105);
+
 }
 #passValid{
 color: aliceblue;

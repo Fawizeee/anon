@@ -9,7 +9,7 @@ session_start();
 if (isset($_GET["id"])) {
   
     $_SESSION["id"] = $_GET["id"];
-    $_SESSION["userid"] = $_GET["userid"];
+    $_SESSION["user"] = $_GET["userid"];
     $_SESSION["multi"] =intval($_GET["multi"]) ;
  
 
@@ -32,7 +32,7 @@ if (!$db) {
 }
 
 $id = $_SESSION["id"];
-$userid =     $_SESSION["userid"];
+$userid =     $_SESSION["user"];
 $multi =   $_SESSION["multi"];
 
 // use prepared statement to prevent SQL injection
@@ -51,7 +51,7 @@ $stmt->bind_Param("s", $id);
 $retexe =$stmt->execute();
      $ret = $stmt->get_result();
 // fetch all rows
-
+unset($_SESSION["id"],$_SESSION["multi"],$_SESSION["user"]);
 include_once("../module/reactioui.php");
 
     while ($row = $ret->fetch_array(SQLITE3_ASSOC)) {
@@ -61,7 +61,7 @@ include_once("../module/reactioui.php");
     $data = [...$row, "reactlist" => $reactlist,"preview"=>true];
     // use a template engine to render the HTML template
     $handlebars= new HandlebarTemplate(file_get_contents("views/reaction.hbs"));
- 
+    $handlebars->registerHelpers("format");    
      $template = $handlebars->compile();
     echo $handlebars->render( $data);
 }}
