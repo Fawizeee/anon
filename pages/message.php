@@ -8,7 +8,7 @@ include "../module/handlebarsTemplate.php";
 
 // use Cradle\Handlebars\HandlebarsHandler as Handlebars;
 // require dirname(__DIR__) . '\vendor\autoload.php';
-$templateString = file_get_contents("views/message.hbs");
+$templateString = file_get_contents("../public/views/message.hbs");
 $handlebars = new HandlebarTemplate($templateString);
 
 

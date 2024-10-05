@@ -12,8 +12,8 @@ require("../module/password.php");
 include "../module/handlebarsTemplate.php";
 require "../module/updateUserloginInfo.php";
 
-$loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "views/login.hbs"));
-$logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"views/logout.hbs"));
+$loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "../public/views/login.hbs"));
+$logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"../public/views/logout.hbs"));
   
   $db = new DbConn();
   $db = $db->db;

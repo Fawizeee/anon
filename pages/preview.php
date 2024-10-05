@@ -60,7 +60,7 @@ include_once("../module/reactioui.php");
     $reactlist = $reactions->getReactionUIData();
     $data = [...$row, "reactlist" => $reactlist,"preview"=>true];
     // use a template engine to render the HTML template
-    $handlebars= new HandlebarTemplate(file_get_contents("views/reaction.hbs"));
+    $handlebars= new HandlebarTemplate(file_get_contents("../public/views/reaction.hbs"));
     $handlebars->registerHelpers("format");    
      $template = $handlebars->compile();
     echo $handlebars->render( $data);
