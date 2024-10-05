@@ -88,6 +88,7 @@ if(isset($_SERVER["QUERY_STRING"])){
               //
               // get data for Reaction
                if($ret){
+                  
               $this->id_string =   isset($_SESSION["userid"])?$_SESSION["userid"]:$this->id_string;
               
                  include_once("../module/reactioui.php");
