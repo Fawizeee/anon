@@ -3,7 +3,9 @@
 	<html lang="en">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href = "/anon/css/messages.css" rel ="stylesheet" >
+     <link href = "public/css/messages.css" rel ="stylesheet" >
+     <link href = "/anon/public/css/messages.css" rel ="stylesheet" >
+
 <!-- Font Awesome 5 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -18,15 +20,15 @@
 	<div class = "messages light dark" id = messages.{{SENDERID}}>
 		<div id = logo>
 			<img src = /anon/pic/anon.png />
-			<p> anon message </p>
+			<div onclick="selectid(this)"  data-msgid={{MSGID}} data-selected=0 ><p> anon message </p></div>
 			<p id = id data-user = {{USERID}}  onclick="preview(this,1)"> {{SENDERID}}</p>
 		</div> 
 	
 		<div id = mssgCntnts   data-msgid={{MSGID}}   onclick="preview(this,0)" >
 
-			<p>  {{MSG}}</p>
+			<p>  {{{format MSG}}}</p>
 				
-			<p> {{CTIME}} </p>
+			<p id = "time"> {{CTIME}} </p>
       	</div>
         <div class ="reactCon">
 		{{#each reactlist}}
@@ -51,6 +53,10 @@
  
 
 {{/each}}
+<div onclick="saveSelected()" style="border:2px solid black;" id = "saveselected"> done</div>
+
+<script   src = "public/js/httpreq.js"></script>
+<script   src = "public/js/preview.js"></script>
 {{/if}}
 
 {{#if preview}}
@@ -64,9 +70,12 @@
 	
 	<div id = mssgCntnts   data-msgid={{MSGID}}   onclick="preview(this,0)">
 
-			<p >{{MSG}}</p>
+		<div>
+					<p>  {{{format MSG}}}</p>
+
+		</div>	
 				
-			<p> {{CTIME}}</p>
+			<p id = "time"> {{CTIME}}</p>
       </div>
       <div class ="reactCon">
 		{{#each reactlist}}
@@ -90,5 +99,3 @@
  </div>
  
 {{/if}}
-<script   src = "/anon/js/httpreq.js"></script>
-<script   src = "/anon/js/preview.js"></script>
