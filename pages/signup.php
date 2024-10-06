@@ -12,7 +12,7 @@ require "../module/registrationController.php";
 $db = new DbConn();
 $password_mod = new Password_mod();
 $userRegister = new UserRegister($db,$password_mod);
-$handlebars = new HandlebarTemplate(file_get_contents("../public/views/signup.hbs"));
+$handlebars = new HandlebarTemplate(file_get_contents("views/signup.hbs"));
 $messageCon = null;
 
 try{

@@ -8,7 +8,7 @@ include "../module/handlebarsTemplate.php";
 
 // use Cradle\Handlebars\HandlebarsHandler as Handlebars;
 // require dirname(__DIR__) . '\vendor\autoload.php';
-$templateString = file_get_contents("../public/views/message.hbs");
+$templateString = file_get_contents("views/message.hbs");
 $handlebars = new HandlebarTemplate($templateString);
 
 
@@ -34,12 +34,12 @@ try {
         if ($userAvail) {
 
             if (isset($_POST["message"])) {
-            
+
                 $id = new idcookie();
                 $id_string = $_SESSION["userid"] ?? $id->makeidcookie();
                 $id_msg = $id->makeidcookie();
                 $message = $_POST["message"];
-            var_dump($message);
+            
                 if (empty($message)) {
 
                     throw new Exception("No message to send");
