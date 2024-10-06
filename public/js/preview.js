@@ -25,6 +25,7 @@ if(httpreq.status === 200){
  var selectids = [];
  var selectedLen = 0
  var saveselected = document.getElementById("saveselected");
+
  function display(){
       selectedLen==0?
       saveselected.style.display = "none":
@@ -51,8 +52,7 @@ function selectid(e){
 function saveSelected(){
    alert("yes");
   const selectedidjson = JSON.stringify(selectids);
-//  var result =  fetch(`/anon/module/saveselected?selectedid=${selectedidjson}`).catch(err=>"err").then(result=>"result");
-//  console.log(result+"jhjggh");
+
 
  fetch(`/anon/module/saveselected?selectedid=${selectedidjson}`).then(Response=>Response.text()).then((data)=>{
 
