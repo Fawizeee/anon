@@ -86,7 +86,7 @@
                     "name" => $this->name,
                     "uname" => $this->uname,
                     "key" => $key,
-                    "reacted" => $hasReacted[$key]?true:false,
+                    "reacted" => $hasReacted[$key],
                     "keyclr" => $keyVal,
                     "length" => $length,
                     "fa" => $this->fontAwesome[$key],
