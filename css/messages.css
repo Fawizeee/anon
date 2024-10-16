@@ -1,4 +1,10 @@
+body {
+	
+	background-color: #1F2937;
+	color: #D1D5DB;
+	font-family: Arial, sans-serif;
 
+  }
   
   
   #mybody {
@@ -14,8 +20,7 @@
   .messages {
 	margin: auto;
 
-	background-image: -o-repeating-linear-gradient(to left top ,rgb(245, 112, 3),yellow);
-
+	background-color: #2D3748;
 	border-radius: 5px;
 	padding: 20px;
 	width: 85%;
@@ -26,7 +31,8 @@
 	margin-top:5%;
 	margin-bottom: 5%;
 	font-size: 20px;
-	border: 2px solid black;
+	text-align: center;	
+	border: 2px solid yellow;
 
   }
   
@@ -39,7 +45,6 @@
 	height:70px;
 	margin-left: -5%;
 	font-size:small;
-	color: rgb(5, 70, 70);
 
   }
   .loading{
@@ -64,24 +69,14 @@
   #mssgCntnts {
 	margin-bottom: 20px;
 	color: aqua;
-
   }
   #mssgCntnts :first-child {
+	text-align: center;	
 	text-indent: 3%;
 	width: 100%;
-	display: inline-blocks;
-	height:fit-content;
-	max-height: 500px;
+	display: block;
 	line-height: 30px;
-	text-align: center;
 	overflow-wrap: break-word;
-	overflow-y: scroll;
-	color:black;
-  }
-  #time{
-	color:black;
-	text-align: center;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   
   .reactCon {
@@ -93,7 +88,7 @@
   }
   
   .reactions {
-	background-color:orangered;
+	background-color: #434C5E;
 	border-radius: 5px;
 	padding: 10px;
 	cursor: pointer;
