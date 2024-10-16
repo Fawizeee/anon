@@ -1,13 +1,13 @@
-var searchParams = new URLSearchParams(window.location.search);
-
 var conn = new WebSocket('ws://192.168.137.1:8080');
 
+var searchParams = new URLSearchParams(window.location.search);
 var room = searchParams.get("name");
+
 var rct_clr = [];
 
-fetch("/anon/json/styles.json").then(Response=>Response.text()).then((data)=>{
-  rct_clr=JSON.parse(data)["reactclr"]
-console.log( rct_clr)
+fetch("/anon/public/json/styles.json").then(Response=>Response.text()).then((data)=>{
+  rct_clr=JSON.parse(data)["reactclr"];
+  console.log( rct_clr);
 })
  
  function subscribe(channel) {
