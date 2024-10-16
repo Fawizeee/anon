@@ -15,6 +15,7 @@ require "../module/updateUserloginInfo.php";
 $loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "../public/views/login.hbs"));
 $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"../public/views/logout.hbs"));
   
+  
   $db = new DbConn();
   $db = $db->db;
   $password_mod = new Password_mod();

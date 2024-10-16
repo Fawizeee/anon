@@ -1,4 +1,3 @@
-
 <head>	
 	<html lang="en">
 	<meta charset="UTF-8">
@@ -24,7 +23,7 @@
 			<p id = id data-user = {{USERID}}  onclick="preview(this,1)"> {{SENDERID}}</p>
 		</div> 
 	
-		<div id = mssgCntnts   data-msgid={{MSGID}}   onclick="preview(this,0)" >
+		<div id = mssgCntnts   data-msgid={{MSGID}} data-user = {{USERID}}  onclick="preview(this,0)" >
 
 			<p>  {{{format MSG}}}</p>
 				
@@ -53,9 +52,9 @@
  
 
 {{/each}}
+{{#if isUser}}
 <div onclick="saveSelected()" style="border:2px solid black;" id = "saveselected"> done</div>
-
-<script   src = "public/js/httpreq.js"></script>
+{{/if}}
 <script   src = "public/js/preview.js"></script>
 {{/if}}
 
@@ -63,12 +62,13 @@
 	<div class = "messages light dark" id = messages.{{SENDERID}}>
 		<div id = logo>
 			<img src = /anon/pic/anon.png />
-			<p> anon message </p>
+
+			<p> anon message  </p>
 			
-			<p id = id data-user = {{USERID}} onclick="preview(this,1)" > {{SENDERID}}</p>
+			<p id = id data-user = {{USERID}}  > {{SENDERID}}</p>
 	</div> 
 	
-	<div id = mssgCntnts   data-msgid={{MSGID}}   onclick="preview(this,0)">
+	<div id = mssgCntnts   data-msgid={{MSGID}}   >
 
 		<div>
 					<p>  {{{format MSG}}}</p>
@@ -80,18 +80,18 @@
       <div class ="reactCon">
 		{{#each reactlist}}
 			{{#if reacted }}
-	 		 <div  id ={{msgid}}{{key}}  class = 'reactions' onclick= reactor(this) data-id ={{msgid}} data-name="{{name}}" data-cuser = "{{uname}}" data-react = {{key}}  data-reacted = 'true'  > 
+	 		 <div  id ={{msgid}}{{key}}  class = 'reactions' onclick= 'reactor(this)' data-id ={{msgid}} data-name="{{name}}" data-cuser = "{{uname}}" data-react = {{key}}  data-reacted = 'true'  > 
 				<i class ="{{fa}}"style="color:{{keyclr}};"></i>
 				<p> {{length}}</p> 
 				
 		     </div>	
 				{{else}}
-			 <div  id ={{msgid}}{{key}}  class = 'reactions' onclick= reactor(this) data-id ={{msgid}} data-name= {{name}} data-cuser = {{uname}} data-react = {{key}}  data-reacted = 'false'  >
+			 <div  id ={{msgid}}{{key}}  class = 'reactions' onclick= 'reactor(this)' data-id ={{msgid}} data-name= {{name}} data-cuser = {{uname}} data-react = {{key}}  data-reacted = 'false'  >
 				<i class ="{{fa}}" style="{{keyclr}};"></i>
 				
 					<p> {{length}}</p>
+			 </div>{{reacted}}
 					
-			 </div>
 								
 			{{/if}}
 		{{/each}}
@@ -99,3 +99,5 @@
  </div>
  
 {{/if}}
+<script   src = "/anon/public/js/httpreq.js"></script>
+

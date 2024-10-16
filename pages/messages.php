@@ -16,7 +16,6 @@ $handlebars->registerHelpers("format");
 
 session_start();
 
-var_dump([$_SESSION]);
 $db= new DbConn();
 $db = $db->db;
 
