@@ -6,16 +6,16 @@ require_once("../module/cookie.php");
 require_once("../module/idcookiemaker.php");
 require_once("../module/handlebarsTemplate.php");
 
-$mesgtemplateString = file_get_contents("views/messages.hbs");
+$mesgtemplateString = file_get_contents("../public/views/messages.hbs");
 $handlebars = new HandlebarTemplate($mesgtemplateString);
-$ReactiontemplateString = file_get_contents("views/reaction.hbs");
-$dashboardTemplateString = file_get_contents("views/dashboard.hbs");
+$ReactiontemplateString = file_get_contents("../public/views/reaction.hbs");
+$dashboardTemplateString = file_get_contents("../public/views/dashboard.hbs");
 $handlebars->registerPartials("dashboard",$dashboardTemplateString);
 $handlebars->registerPartials("reaction",$ReactiontemplateString);
+$handlebars->registerHelpers("format");
 
 session_start();
 
-var_dump([$_SESSION]);
 $db= new DbConn();
 $db = $db->db;
 

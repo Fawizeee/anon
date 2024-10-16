@@ -104,7 +104,7 @@ array_push($this->data, [...$row,"reactlist"=>$reactlist]);
    
           }
       }
- return["message"=> $this->data,"isUser"=> $this->isUser];
+ return["message"=>$this->data,"isUser"=> $this->isUser];
       }
 }
 
