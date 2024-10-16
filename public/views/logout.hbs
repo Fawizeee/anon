@@ -1,10 +1,19 @@
+<head>
+    <title>Logout</title>
+</head>
 <nav>
-    <p onclick = "logout">logout</p>
+    <p onclick="logout">logout</p>
 </nav>
 
 <h1>You are logged into a session</h1>
 <h3>kindly logout to login another account</h3>
 
-<form action="pages/logout"  method="post">
+<form action="pages/logout" method="post">
     <button type="submit">LOGOUT</button>
 </form>
+
+<div>
+    <p>
+        <a href="/anon/messages?name={{name}}">Go to Dashboard</a>
+    </p>
+</div>

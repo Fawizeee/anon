@@ -2,12 +2,14 @@
 
 
 
-class DbConn{
+class DbConn
+{
     public $conn;
     public $db;
 
-      public function __construct() {
-     
+    public function __construct()
+    {
+
         $this->db = $this->conn();
         $this->createTable();
 
@@ -15,16 +17,18 @@ class DbConn{
 
 
 
-}
+    }
 
-    public function conn(){
-    $this->conn =   new mysqli("localhost","root","","anonymous");
+    public function conn()
+    {
+        $this->conn = new mysqli("localhost", "root", "", "anonymous");
 
         return $this->conn;
     }
-    private function createTable() {
+    private function createTable()
+    {
         try {
-            $message  = $this->db->prepare(
+            $message = $this->db->prepare(
                 " CREATE TABLE IF NOT EXISTS MESSAGES
                     (
                     USERID TEXT NOT NULL,
@@ -41,7 +45,7 @@ class DbConn{
                     ) "
             );
 
-            $Ctable  = $this->db->prepare(
+            $Ctable = $this->db->prepare(
                 "CREATE TABLE  IF NOT EXISTS INFO
                 (
                     ID TEXT NULL,
@@ -52,8 +56,8 @@ class DbConn{
 
             $Ctable->execute();
             $ret = $Ctable->get_result();
-           $message->execute();
-           $retm = $message->get_result();
+            $message->execute();
+            $retm = $message->get_result();
 
             if ($ret && $retm) {
                 return true;

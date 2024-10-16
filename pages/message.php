@@ -16,30 +16,30 @@ $handlebars = new HandlebarTemplate($templateString);
 $db = new DbConn();
 $db = $db->db;
 $cookie_mod = new cookie_mod();
-$row="";
+$row = "";
 
 try {
     if (isset($_SERVER["QUERY_STRING"])) {
         $query = explode("/", $_SERVER["QUERY_STRING"]);
         $q_id = explode("=", $query[0]);
-        $person =strtolower($q_id[1]);
+        $person = strtolower($q_id[1]);
 
         // Check if user is available
         $stmt = $db->prepare("SELECT  USERNAME FROM INFO WHERE USERNAME = ?");
         $stmt->bind_Param("s", $person);
-         $ret =   $stmt->execute();
+        $ret = $stmt->execute();
         $result = $stmt->get_result();
-        $userAvail =$row= $result->fetch_array();
-  
+        $userAvail = $row = $result->fetch_array();
+
         if ($userAvail) {
 
             if (isset($_POST["message"])) {
-            
+
                 $id = new idcookie();
                 $id_string = $_SESSION["userid"] ?? $id->makeidcookie();
                 $id_msg = $id->makeidcookie();
                 $message = $_POST["message"];
-            var_dump($message);
+                var_dump($message);
                 if (empty($message)) {
 
                     throw new Exception("No message to send");
@@ -50,10 +50,10 @@ try {
                 $sql = "INSERT INTO MESSAGES(USERID, SENDERID, MSG, MSGID, USERNAME,CTIME)
                         VALUES(?,?,?,?,?,?)";
                 $stmt = $db->prepare($sql);
-                $stmt->bind_Param("ssssss", $person,$id_string,$message,$id_msg,$row["USERNAME"],$date);
-        
-               $ret =  $stmt->execute();
-           
+                $stmt->bind_Param("ssssss", $person, $id_string, $message, $id_msg, $row["USERNAME"], $date);
+
+                $ret = $stmt->execute();
+
 
                 if (!$ret) {
 
@@ -61,7 +61,7 @@ try {
                 }
             }
         } else {
-            
+
             throw new Exception("User not found");
         }
     }
