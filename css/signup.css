@@ -1,85 +1,151 @@
-/* signup.css */
-
 body {
-    font-family: Arial, sans-serif;
-    background: url("/anon/pic/anon.png");
-    background-repeat: no-repeat;
-  }
+  font-family: Arial, sans-serif;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background:whitesmoke;
+  color: #fff;
+flex-wrap: wrap;
+  background-repeat: repeat;
+  background-image: linear-gradient(to top, grey, rgb(5, 1, 5));
+}
+
+.message{
+  color:rgb(8, 13, 17);
+  display:block;
+  width:90%;
+  max-width: 700px;
+  height: 350px;
+  margin :0 auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+padding : 50px 10px;
+
+text-align: center;
+  font-weight: bold;
+  font-size:large;
+  font-family: Arial, sans-serif;
+  line-height: 40px;
+  box-shadow: 1px 1px 1px 1px black;
+  background-image: url("/anon/pic/anon.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: rgb(58, 56, 58);
+  background-size: contain ;
+  color: rgb(237, 238, 238) ;
+  backdrop-filter: blur();
+}
+#secondMsg{
+  margin-bottom: 90px;
+
+}
+.container {
+  width: 95%;
+  height: 90%;
+  max-width: 700px;
+  max-height: 700px;
+	background-image: transparent; 
+  text-align: center;
+  padding-bottom: 100px;
+  padding-top: 0%;
+  min-width: 400px;
+  border-radius :15px;
+  margin: 0 auto;
+  color: #0a0a08  ;
+}
+
+#head {
+  display: grid;
+  place-items: center;
+  background-image: url("/anon/pic/anon.png");
+	background: transparent; 
+  height: 10px;
+  width: 100%;
+  border-radius :15px 15px 0 0;
+  color: aliceblue;
+
+}
+
+h1 {
+  margin: 0 auto;
+}
+
+input[type="text"], input[type="password"] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #f8f7f7 ;
+  border-radius: 4px;
+  height: 100%;
+  background-color: transparent;
+  outline: none;
+}
+
+button {
+  width: 60%;
+  max-width: 250px;
+  background-color:#0a0a08;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+margin: 0 auto; 
+}
+
+button:hover {
+background-color: #222e61;
+
+}
+
+.form-inp {
+  margin:50px auto;
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  height: fit-content;
+  max-width: 500px;
   
-  .formCon {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    filter: blur(2);
-  }
-  
-  p {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group-text {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px;
-  }
-  
-  .form-control {
-    border: none;
-    padding: 10px;
-    background-color: #f0f0f0;
-  }
-  
-  .bi {
-    font-size: 18px;
-    margin-right: 10px;
-  }
-  
-  #ValidCon {
-    margin-top: 10px;
-  }
-  
-  #passValid {
-    font-size: 12px;
-    color: red;
-  }
-  
-  #submit {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  #submit:hover {
-    background-color: #3e8e41;
-  }
-  
-  #messgCon {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  #messgCon a {
-    text-decoration: none;
-    color: #4CAF50;
-  }
-  
-  #messgCon a:hover {
-    color: #3e8e41;
-  }
+  border-radius: 10px;
+  height: fit-content;
+    background-color:transparent;
+
+}
+
+.form-inp p {
+  width: 20%;
+  font-weight: bold;
+  font-size: small;
+  margin-top: 20px;
+  color: #fff ;
+}
+
+form {
+  width: 100%;
+  margin-top: 0;
+ 
+}
+
+
+
+#messgCon {
+margin-top: 20px;
+text-align: center;
+}
+
+#messgCon a {
+text-decoration: none;
+color:rgb(36, 36, 94);
+
+}
+
+#messgCon a:hover {
+  color: rgb(11, 11, 105);
+
+}
+#passValid{
+color: aliceblue;
+}

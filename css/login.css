@@ -1,45 +1,72 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #333;
-  display: flex;
+  display:flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url("/anon/pic/anon.png");
+  background:whitesmoke;
+  color: #fff;
+  flex-wrap: wrap;
   background-repeat: repeat;
-color: white;
 }
 
+.message{
+  color:rgb(8, 13, 17);
+  display:block;
+  width:90%;
+  max-width: 700px;
+  height: 350px;
+  margin :0 auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+padding : 50px 10px;
+
+text-align: center;
+  font-weight: bold;
+  font-size:large;
+  font-family: Arial, sans-serif;
+  line-height: 40px;
+  box-shadow: 1px 1px 1px 1px black;
+  background-image: url("/anon/pic/anon.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: rgb(58, 56, 58);
+  background-size: contain ;
+  color: rgb(237, 238, 238) ;
+  backdrop-filter: blur();
+}
+#secondMsg{
+  margin-bottom: 90px;
+
+}
 .container {
   width: 95%;
   height: 90%;
   max-width: 700px;
   max-height: 700px;
-  background-color: #524e4e;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	background-image: transparent; 
   text-align: center;
   padding-bottom: 100px;
   padding-top: 0%;
-  box-shadow: 10px 10px 10px 10px #111;
   min-width: 400px;
-  border-radius :15px;;
+  border-radius :15px;
+  margin: 0 auto;
+  color: #0a0a08  ;
 }
 
 #head {
   display: grid;
   place-items: center;
-  background-color: #555;
-  color: #fff;
-  height: 100px;
+  background-image: url("/anon/pic/anon.png");
+	background: transparent; 
+  height: 10px;
   width: 100%;
-  background-color: #3d3d3d;
   border-radius :15px 15px 0 0;
+  color: aliceblue;
 
 }
 
 h1 {
-  color: #fff;
   margin: 0 auto;
 }
 
@@ -48,28 +75,29 @@ input[type="text"], input[type="password"] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid #666;
+  border: none;
+  border-bottom: 2px solid #f8f7f7 ;
   border-radius: 4px;
   height: 100%;
-  background-color: #555;
-  color: #fff;
+  background-color: transparent;
+  outline: none;
 }
 
 button {
   width: 60%;
   max-width: 250px;
-  background-color: #4CAF50;
+  background-color:#0a0a08;
   color: #fff;
   padding: 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
- 
+margin: 0 auto; 
 }
 
 button:hover {
-  background-color: #45a049;
+background-color: #222e61;
+
 }
 
 .form-inp {
@@ -79,18 +107,19 @@ button:hover {
   width: 90%;
   height: fit-content;
   max-width: 500px;
-  border: 5px solid #333;
+  
   border-radius: 10px;
   height: fit-content;
-  background-color: #444;
+    background-color:transparent;
+
 }
 
 .form-inp p {
   width: 20%;
   font-weight: bold;
-  color: #fff;
   font-size: small;
   margin-top: 20px;
+  color: #fff ;
 }
 
 form {
@@ -100,27 +129,22 @@ form {
 }
 
 
+
 #messgCon {
 margin-top: 20px;
 text-align: center;
-color:antiquewhite;
 }
 
-#messgCon p a {
+#messgCon a {
 text-decoration: none;
-color: #4CAF50;
+color:rgb(36, 36, 94);
+
 }
 
-#messgCon p a:hover {
-color: #3e8e41;
+#messgCon a:hover {
+  color: rgb(11, 11, 105);
+
 }
 #passValid{
 color: aliceblue;
-}
-#chkbox{
-color: aliceblue;
-margin-bottom: 20px;
-}
-.error{
-color: rgb(235, 121, 121);
-}
+} 

@@ -15,7 +15,6 @@ require "../module/updateUserloginInfo.php";
 $loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "views/login.hbs"));
 $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"views/logout.hbs"));
   
-var_dump($_SESSION);
   $db = new DbConn();
   $db = $db->db;
   $password_mod = new Password_mod();
@@ -33,9 +32,6 @@ var_dump($_SESSION);
               
                 $autologin = new Login($db);
                   $login =  $autologin->autologin($_COOKIE);
-                  // var_dump($login);exit;
-                  // var_dump($login);exit;
-
                   $canlogin = $login["isUser"];
                   $message = $login["msg"];
                   $row = $login["row"];
@@ -46,6 +42,7 @@ var_dump($_SESSION);
                   $name = $row["username"];
                   $_SESSION["loggedin"] = true;
                   $_SESSION["name"] = $name; 
+                  $_SESSION["userid"] = $row["id"];
                   
                   header(header: "location:/anon/messages?name=$row[username]"); exit;}
                  
