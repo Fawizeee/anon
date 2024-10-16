@@ -1,5 +1,4 @@
 <?php
-use Symfony\Component\Routing\Attribute\Route;
 
 class idcookie{
     public $number;
@@ -22,7 +21,8 @@ $this->letter = ["a","b","d","e","g","h","i","k","l","o"];
       $this->idcookie.= $pik_char;
 
     }
-    return   $this->idcookie;
+    return   $this->idcookie ;;
  }
 }
 
+//echo $newcookie->makeidcookie();

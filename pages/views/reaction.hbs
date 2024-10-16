@@ -24,9 +24,9 @@
 	
 		<div id = mssgCntnts   data-msgid={{MSGID}}   onclick="preview(this,0)" >
 
-			<p>  {{{format MSG}}}</p>
+			<p>  {{MSG}}</p>
 				
-			<p id = "time"> {{CTIME}} </p>
+			<p> {{CTIME}} </p>
       	</div>
         <div class ="reactCon">
 		{{#each reactlist}}
@@ -64,12 +64,9 @@
 	
 	<div id = mssgCntnts   data-msgid={{MSGID}}   onclick="preview(this,0)">
 
-		<div>
-					<p>  {{{format MSG}}}</p>
-
-		</div>	
+			<p >{{MSG}}</p>
 				
-			<p id = "time"> {{CTIME}}</p>
+			<p> {{CTIME}}</p>
       </div>
       <div class ="reactCon">
 		{{#each reactlist}}
