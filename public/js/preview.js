@@ -1,6 +1,6 @@
 function preview(elem, multi) {
    // Get the ID of the element
-   if (multi) { var id = `${elem.innerText}` } else { var id = elem.dataset.msgid };
+   if (multi) { var id = `${elem.dataset.senderid}` } else { var id = elem.dataset.msgid };
    // Get all elements with class "messages"
    var userid = elem.dataset.user;
    console.log(userid)
@@ -43,18 +43,24 @@ function selectid(e) {
       selectids.splice(ind, 1);
       selectedLen = selectedLen - 1;
    }
+   count = saveselected.firstElementChild.textContent
+   saveselected.firstElementChild.textContent =selectedLen;
    display();
    console.log(selectids)
 }
 
-function saveSelected() {
+async function saveSelected(e) {
    alert("yes");
    const selectedidjson = JSON.stringify(selectids);
-   //  var result =  fetch(`/anon/module/saveselected?selectedid=${selectedidjson}`).catch(err=>"err").then(result=>"result");
-   //  console.log(result+"jhjggh");
+var link;
 
-   fetch(`/anon/module/saveselected?selectedid=${selectedidjson}`).then(Response => Response.text()).then((data) => {
+   await   fetch(`/anon/module/saveselected?selectedid=${selectedidjson}`).then(Response => Response.text()).then((data) => {
 
-      console.log(data)
+     link = data;
    })
+   e.style.display = "none"
+  var prompt = document.getElementById("promptCon");
+  prompt.style.display = "block";
+  prompt.children[2].innerHTML = link;
+
 }

@@ -14,6 +14,7 @@ $password_mod = new Password_mod();
 $userRegister = new UserRegister($db,$password_mod);
 $handlebars = new HandlebarTemplate(file_get_contents("../public/views/signup.hbs"));
 $messageCon = null;
+$status = null;
 
 try{
     if (isset($_POST["name"] )&&isset($_POST["pword"])) {
@@ -23,6 +24,7 @@ try{
      
      if($userSaved){
         $messageCon = "You have been succesfully registered";
+        $status = "success";
      }
      else{
         throw new Exception("Error occured while registering crestering credentials");
@@ -31,9 +33,11 @@ try{
 }
 catch(Exception $e){
     $messageCon = $e->getMessage();
+    $status = "fail";
+    
 
 }finally{
-    $data = ["message" => $messageCon];
+    $data = ["message" => $messageCon,"status"=>$status];
     echo $handlebars->render($data);
     $db->db->close();
 }

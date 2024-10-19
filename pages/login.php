@@ -23,7 +23,7 @@ $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:".
       //  var_dump($_COOKIE);exit;
         // autologin if possible
         if(isset($_SESSION)&&isset($_SESSION["loggedin"])){
-          echo $logoutPage->render([]);
+          echo $logoutPage->render(["id"=>$_SESSION["name"]]);
           exit;
         }
         if(isset($_COOKIE)&&!isset($_SESSION["loggedin"]))

@@ -1,127 +1,113 @@
-
-  
-  
-  #mybody {
-	margin:0 ;
-	display: block;
-	width: 100%;
-    justify-content: center;
-	height: fit-content;
-	top: 0%;
-
-  }
-  
-  .messages {
-	margin: auto;
-
-	background-image: -o-repeating-linear-gradient(to left top ,rgb(245, 112, 3),yellow);
-
-	border-radius: 5px;
+body {
+	font-family: Arial, sans-serif;
+	background-color: #121212; /* Dark background */
+	margin: 0;
 	padding: 20px;
-	width: 85%;
-	max-width: 600px;
-	height: fit-content;
-	max-height: 700px;
-	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-	margin-top:5%;
-	margin-bottom: 5%;
-	font-size: 20px;
-	border: 2px solid black;
-
-  }
-  
-  #logo {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;    	
-	margin-bottom: 20px;
-	width:100%;
-	height:70px;
-	margin-left: -5%;
-	font-size:small;
-	color: rgb(5, 70, 70);
-
-  }
-  .loading{
-	display: none;
-  }
-  form{
-	background: inherit;
+	color: #ffffff; /* White text */
+}
+.message-container {
+	background: #1e1e1e; /* Darker container background */
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 	margin: 0 auto;
-	color: aqua;
-	font-weight: bold;
-	font-family: 'Courier
+	margin-bottom: 20px; /* Space between messages */
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 2px solid #007BFF; /* Blue border */
+	max-width: 700px;
+	max-height: 400px;
 
-  }
-  #logo img {
+}
+.logo {
 	width: 50px;
-	height: 80px;
-	object-fit: cover;
-	border-radius: 50%;
-	margin-right: 10px;
-  }
-  
-  #mssgCntnts {
-	margin-bottom: 20px;
-	color: aqua;
+	height: 50px;
+	background-image: url("/anon/public/pic/anon.png");
+	border-radius:50%;
+	background-color: #007BFF; /* Blue logo */
+	margin-bottom: 30px;
+}
+	.logo img{
+		width:80%;
+		height: 80%;
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+	
+	
 
-  }
-  #mssgCntnts :first-child {
-	text-indent: 3%;
-	width: 100%;
-	display: inline-blocks;
-	height:fit-content;
-	max-height: 500px;
-	line-height: 30px;
-	text-align: center;
+.inscription {
+	color: #ffffff; /* White text for inscription */
+	margin-bottom: 10px;
+}
+.message {
+	margin: 10px 0;
+	padding: 10px;
+	border-left: 4px solid #007BFF; /* Blue left border */
+	width: 80%;
+	max-width: 500px;
+	text-wrap: wrap;
 	overflow-wrap: break-word;
 	overflow-y: scroll;
-	color:black;
-  }
-  #time{
-	color:black;
-	text-align: center;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .reactCon {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 10px;
-  }
-  
-  .reactions {
-	background-color:orangered;
-	border-radius: 5px;
-	padding: 10px;
-	cursor: pointer;
-	display: flex;
-	flex-direction:row;
-	align-items: center;
-	justify-content: space-between;
-
-	font-size: 15px;
-	gap: 5px;
-
-	transition: background-color 0.3s ease;
-  }
-  
-  .reactions:hover {
-	background-color: rgb(7, 129, 129);
-  }
-  
-  .reactions p {
-	margin: 0;
-	border: 2px solid white;
-
-  }
-  
-  #bodCon {
-	margin-top: 50px;
-  }
-  
-  #data {
+	scrollbar-width:0;
+	scrollbar-color:green ;
+	
+}
+::-webkit-scrollbar{
 	display: none;
-  }
+}
+.id-time {
+	font-size: 12px;
+	color: #808080; /* Gray text for ID and time */
+}
+.reactions {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	margin-top: 10px;
+}
+.reaction {
+	width:10%;
+	display: flex;
+	justify-content: space-around;
+	cursor: pointer;
+	color: #007BFF; /* Blue color for reactions */
+	font-weight: bold;
+}
+.reaction i{
+	margin-top:5px;
+	margin-right: 5px;
+}
+#saveselected{
+	height:5em;
+	width :5em;
+	border-radius: 50%;
+	content:"save";
+	display: none;
+	position: fixed;
+	left:70vw;
+	top:70vh;
+	background: #007BFF;
+	align-content: center;
+	text-align: center;
+}
+#promptCon{
+	width:70vw;
+	height: 40vh;
+	max-width: 500vw;
+	z-index: 1;
+	display: none;
+	position: fixed;
+	top:15vh;
+	left:15vw;
+	background: #121212;
+	font-size: small;
+	text-align: center;
+}
+#prompt{
+	margin-top: 40%;
+	margin-bottom:10% ;
+	border: 2px solid grey;
+}

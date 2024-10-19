@@ -1,150 +1,99 @@
 body {
   font-family: Arial, sans-serif;
-  display:flex;
+  background-color: #121212; /* Dark background */
+  margin: 0;
+  padding: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background:whitesmoke;
-  color: #fff;
-  flex-wrap: wrap;
-  background-repeat: repeat;
+  height: 100vh;
+  color: #ffffff; /* White text */
 }
-
-.message{
-  color:rgb(8, 13, 17);
-  display:block;
-  width:90%;
-  max-width: 700px;
-  height: 350px;
-  margin :0 auto;
-  border-radius: 15px;
-  margin-bottom: 20px;
-padding : 50px 10px;
-
-text-align: center;
-  font-weight: bold;
-  font-size:large;
-  font-family: Arial, sans-serif;
-  line-height: 40px;
-  box-shadow: 1px 1px 1px 1px black;
-  background-image: url("/anon/pic/anon.png");
-  background-repeat: no-repeat;
-  background-position: top;
-  background-color: rgb(58, 56, 58);
-  background-size: contain ;
-  color: rgb(237, 238, 238) ;
-  backdrop-filter: blur();
+.login-container {
+  background: #1e1e1e; /* Darker container background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 400px; /* Width of the container */
+  height: 520px;
 }
-#secondMsg{
-  margin-bottom: 90px;
-
-}
-.container {
-  width: 95%;
-  height: 90%;
-  max-width: 700px;
-  max-height: 700px;
-	background-image: transparent; 
+h2 {
   text-align: center;
-  padding-bottom: 100px;
-  padding-top: 0%;
-  min-width: 400px;
-  border-radius :15px;
-  margin: 0 auto;
-  color: #0a0a08  ;
+  color: #ffffff; /* White text for heading */
+  font-size: 50px;
 }
-
-#head {
-  display: grid;
-  place-items: center;
-  background-image: url("/anon/pic/anon.png");
-	background: transparent; 
-  height: 10px;
-  width: 100%;
-  border-radius :15px 15px 0 0;
-  color: aliceblue;
-
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  margin-bottom: 20px;
+  border: none; /* Removed border */
+  border-bottom: 2px solid #ccc; /* Light bottom border */
+  border-radius: 0; /* Removed border radius */
+  outline: none; /* Removed outline */
+  background-color: transparent; /* Dark input background */
+  color: #ffffff; /* White text for input */
 }
-
-h1 {
-  margin: 0 auto;
+input::placeholder {
+  color: #bbb; /* Light gray placeholder text */
 }
-
-input[type="text"], input[type="password"] {
-  width: 80%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid #f8f7f7 ;
-  border-radius: 4px;
-  height: 100%;
-  background-color: transparent;
-  outline: none;
+input:focus {
+  border-bottom: 3px solid #007BFF; /* Changed bottom border color on focus */
 }
-
 button {
-  width: 60%;
-  max-width: 250px;
-  background-color:#0a0a08;
-  color: #fff;
-  padding: 15px;
+  width: 70%;
+  padding: 10px;
+  background-color: #007BFF; /* Button color */
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-margin: 0 auto; 
+  margin-top: 30px; /* Space before the submit button */
+  position: relative;
+  left: 15%;
 }
-
 button:hover {
-background-color: #222e61;
-
+  background-color: #0056b3; /* Darker button on hover */
 }
-
-.form-inp {
-  margin:50px auto;
+.remember-me {
+  width:50%;
   display: flex;
-  justify-content: flex-start;
-  width: 90%;
-  height: fit-content;
-  max-width: 500px;
-  
-  border-radius: 10px;
-  height: fit-content;
-    background-color:transparent;
-
-}
-
-.form-inp p {
-  width: 20%;
-  font-weight: bold;
-  font-size: small;
+  align-items: space-around;
   margin-top: 20px;
-  color: #fff ;
+  font-size: small;
 }
-
-form {
-  width: 100%;
-  margin-top: 0;
- 
-}
-
-
-
-#messgCon {
-margin-top: 20px;
-text-align: center;
-}
-
-#messgCon a {
-text-decoration: none;
-color:rgb(36, 36, 94);
+.forgot-password {
+  text-align: right;
+  color: #bbb; /* Light gray for the link */
+  margin-top: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
-
-#messgCon a:hover {
-  color: rgb(11, 11, 105);
+.messgCon {
+  margin-top: 20px; /* Space after the submit button */
+  text-align: center;
+  color: #d9534f; /* Default to red for error messages */
 
 }
-#passValid{
-color: aliceblue;
-} 
+.success {
+  color: #5cb85c; /* Green for success messages */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+.error{
+  color: #d9534f; /* Default to red for error messages */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+
+}
+#rSignup{
+  margin-bottom: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+}
+#rSignup a{
+  text-decoration: none;
+  color:#007BFF;
+  font-size: small;
+}

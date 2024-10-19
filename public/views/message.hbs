@@ -7,8 +7,13 @@
     <style>
       /* add some basic styling to make it look decent */
       body {
-        font-family: Arial, sans-serif;
-        background-color: #eff5ce; /* dark gray background */
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            margin: 0;
+            padding: 20px;
+            display: block;
+            height: 100vh;
+            color: #ffffff; /* White text */
       }
       form {
         max-width: 500px;
@@ -21,7 +26,8 @@
       }
       textarea {
         width: 100%;
-        height: 100px;
+        height: 50%;
+        max-height: 500px;
         padding: 10px;
         font-size: 16px;
         border: none;
@@ -63,7 +69,7 @@
 </head>
 <body>
   <form method="POST" action={{action}}>
-    <textarea type="textarea" name="message" value=""></textarea>
+    <textarea type="textarea" maxlength="255" name="message" value=""></textarea>
     <input type="submit" value="submit" />
     <i class="fas fa-paper-plane" aria-hidden="true"></i> <!-- send icon -->
   </form>

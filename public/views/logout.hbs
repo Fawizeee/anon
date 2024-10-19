@@ -1,4 +1,4 @@
-<nav>
+{{!-- <nav>
     <p onclick = "logout">logout</p>
 </nav>
 
@@ -7,4 +7,76 @@
 
 <form action="pages/logout"  method="post">
     <button type="submit">LOGOUT</button>
+</form> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Prompt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff; /* White text */
+        }
+        .logout-container {
+            background: #1e1e1e; /* Darker container background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px; /* Width of the container */
+        }
+        h2 {
+            color: #ffffff; /* White text for heading */
+        }
+        p {
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker button on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logout-container">
+        <h2>Logged In</h2>
+        <p>You are currently logged in as {{id}}. Would you like to log out?</p>
+<form action="pages/logout"  method="post">
+    <button type="submit">LOGOUT</button>
 </form>
+        <button data-user = {{id}} onclick="goDashboard(this)">Return to dashboard</button>
+    </div>
+
+    <script>
+        function logout() {
+            // Logic for logging out the user
+            alert('You have been logged out.');
+            // Redirect to login page or home page
+            window.location.href = 'login.html'; // Change to your login page URL
+        }
+
+        function goDashboard(e) {
+            // Logic to return to the main page
+            window.location.href = `/anon/messages?name=${e.dataset.user}`; // Change to your main page URL
+        }
+    </script>
+</body>
+</html>

@@ -8,53 +8,26 @@
     <link rel="stylesheet" href="public/css/dashboard.css">
 </head>
 {{#if isUser}}
-
-
-  <div id="dashBod">
-    <div id =  "idCon">    
-      <h1>
-	<i class ="fas fa-user" ></i>
-        
-        {{id}}
-        
-        </h1>
-  </div>
-
-
-    <div class="msglnk">
-      <p class="lnkMsg">Share this link to receive anonymous messages.</p>
-      <div class="linkCon">
-        <span><a class="copy" href="{{msgURL}}">{{msgURL}}</a></span>
-        <span class="c">copy</span>
-      </div>
-    </div>
-    <div class="msglnk">
-      <p class="lnkMsg">Share this with your friends so they can view messages sent to you.</p>
-      <div class="linkCon">
-        <span><a class="copy" href="{{viewURL}}">{{viewURL}}</a></span>
-        <span class="c">copy</span>
-      </div>
-    </div>
-  <nav>
+     <div class="dashboard">
+        <h1>{{id}}</h1>
+        <div class="links">
+            <div class="link-item">
+                <div class="link-title">link for messaging</div>
+                <a href="{{msgURL}}" target="_blank">{{msgURL}}</a>
+                <span class="c">copy</span>
+            </div>
+            <div class="link-item">
+                <div class="link-title">Link for viewing</div>
+                <a href={{viewURL}} target="_blank"> {{viewURL}}</a>
+                <span class="c">copy</span>
+            </div>
+        </div>
     <p><a href="/anon/pages/logout"><b>Logout</b></a> </p>
 
-  </nav>
-  </div>
+    </div>
 {{/if}}
-
+<script src="public/js/copy.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const copyElements = document.querySelectorAll('.c');
-    copyElements.forEach(function(element) {
-      element.addEventListener('click', function() {
-        const text = element.previousElementSibling.textContent;
-        navigator.clipboard.writeText(text).then(function() {
-          console.log('Text copied to clipboard');
-        });
-      });
-    });
-  });
-
  const logout = ()=>{
    const xhr = new XMLHttpRequest();
    xhr.onload= ()=>{
