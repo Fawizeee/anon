@@ -38,6 +38,8 @@ catch(Exception $e){
 
 }finally{
     $data = ["message" => $messageCon,"status"=>$status];
+  $handlebars->registerPartials("nav",file_get_contents(filename:"../public/views/nav.hbs"));
+
     echo $handlebars->render($data);
     $db->db->close();
 }

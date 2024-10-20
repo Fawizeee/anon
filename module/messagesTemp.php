@@ -15,10 +15,11 @@ public $id_string;
       $this->query =  $_SERVER["QUERY_STRING"]; 
       parse_str($this->query,$queryparams);
       $this->nameParam = reset($queryparams); 
+      $this->nameParam = $_GET["id"];
 
    }
    public function checkUser(){
-$stmt = $this->db->prepare("SELECT * FROM INFO WHERE USERNAME=?");
+$stmt = $this->db->prepare("SELECT * FROM INFO WHERE ID=?");
 $stmt->bind_Param("s",$this->nameParam);
  $stmt->execute();
  $result = $stmt->get_result();
@@ -47,23 +48,25 @@ if (empty($result->fetch_array(SQLITE3_ASSOC))){
 }
    }
     public function dashboard(){
-
-
-$msg_URl="$_SERVER[REQUEST_SCHEME]://$_SERVER[SERVER_NAME]/anon/msg?name=".$this->nameParam;
-$view_URL = "$_SERVER[REQUEST_SCHEME]://$_SERVER[SERVER_NAME]/anon/messages?name=".$this->nameParam;
+$msg_URl = null;
+$view_URL = null;
+$dashboarddata = null;
 
 $id = false;
 if(isset($_SESSION["loggedin"])&&$_SESSION["loggedin"]){
       $id = true;
-    if($_SESSION["name"]!==$this->nameParam)
-        $id= false;
+      $msg_URl="$_SERVER[REQUEST_SCHEME]://$_SERVER[SERVER_NAME]/anon/msg?name=".$_SESSION["name"];
+      $view_URL = "$_SERVER[REQUEST_SCHEME]://$_SERVER[SERVER_NAME]/anon/messages?id=".$_SESSION["userid"];
 
+      if($_SESSION["userid"]!==$this->nameParam)
+      $id= false;
+   
 }
 
-
-
-$dashboarddata = ["msgURL"=>$msg_URl ,"viewURL"=>$view_URL,"id"=>$this->nameParam,"isUser"=>$id];
+$dashboarddata = ["msgURL"=>$msg_URl ,"viewURL"=>$view_URL,"id"=>$_SESSION["name"]??null,"isUser"=>$id];
 return $dashboarddata;
+
+
     }
     public function reaction(){
         
@@ -76,7 +79,7 @@ if(isset($_SERVER["QUERY_STRING"])){
              //DATABASE CODE FOR QUERY
              $sql ="SELECT *
               FROM MESSAGES
-              WHERE USERNAME = ?
+              WHERE USERID = ?
              ";
              //
 

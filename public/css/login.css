@@ -2,8 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #121212; /* Dark background */
   margin: 0;
-  padding: 20px;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -16,6 +15,10 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   width: 400px; /* Width of the container */
   height: 520px;
+  margin :0 auto;
+  width:85%;
+  max-width: fit-content;
+  margin-top: 5em;
 }
 h2 {
   text-align: center;

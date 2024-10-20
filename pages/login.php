@@ -14,6 +14,8 @@ require "../module/updateUserloginInfo.php";
 
 $loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "../public/views/login.hbs"));
 $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"../public/views/logout.hbs"));
+$logoutPage->registerPartials("nav",file_get_contents(filename:"../public/views/nav.hbs"));
+$loginPage->registerPartials("nav",file_get_contents(filename:"../public/views/nav.hbs"));
   
   
   $db = new DbConn();
@@ -23,7 +25,7 @@ $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:".
       //  var_dump($_COOKIE);exit;
         // autologin if possible
         if(isset($_SESSION)&&isset($_SESSION["loggedin"])){
-          echo $logoutPage->render(["id"=>$_SESSION["name"]]);
+          echo $logoutPage->render(["id"=>$_SESSION["userid"]]);
           exit;
         }
         if(isset($_COOKIE)&&!isset($_SESSION["loggedin"]))
@@ -45,7 +47,7 @@ $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:".
                   $_SESSION["name"] = $name; 
                   $_SESSION["userid"] = $row["id"];
                   
-                  header(header: "location:/anon/messages?name=$row[username]"); exit;}
+                  header(header: "location:/anon/messages?id=$row[id]"); exit;}
                  
             }
             elseif(isset($_SESSION["checked"])&&$_SESSION["checked"]=="no")
@@ -149,7 +151,7 @@ catch(Exception $e){$message = $e->getMessage();}
         }
         finally{ 
 
-            if ($class=="success"){ header("location:/anon/messages?name=$name");  exit; }
+            if ($class=="success"){ header("location:/anon/messages?id=$row[id]");  exit; }
           
          $data = ["message"=>$message ,"class"=>$class,"isUser"=>$isUser ,"post"=>!$post];
 

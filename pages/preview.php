@@ -5,7 +5,6 @@ include_once "../module/handlebarsTemplate.php";
 include_once "../module/reactioui.php";
 
 session_start();
-var_export($_SESSION);
 if (isset($_GET["id"])) {
   
     $_SESSION["id"] = $_GET["id"];
@@ -54,7 +53,8 @@ while ($row = $ret->fetch_array(SQLITE3_ASSOC)) {
   $data = [...$row, "reactlist" => $reactlist,"preview"=>true];
   // use a template engine to render the HTML template
   $handlebars= new HandlebarTemplate(file_get_contents("../public/views/reaction.hbs"));
-  $handlebars->registerHelpers("format");    
+  $handlebars->registerHelpers("format");
+  $handlebars->registerPartials("nav",file_get_contents(filename:"../public/views/nav.hbs"));
    $template = $handlebars->compile();
   echo $handlebars->render( $data);
 }
@@ -76,6 +76,7 @@ else if(isset($_GET)&&isset($_GET["selectid"])){
       // use a template engine to render the HTML template
       $handlebars= new HandlebarTemplate(file_get_contents("../public/views/reaction.hbs"));
       $handlebars->registerHelpers("format");    
+
        $template = $handlebars->compile();
       echo $handlebars->render( $data);
   }
