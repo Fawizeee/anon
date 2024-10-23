@@ -1,4 +1,5 @@
 <?php
+    namespace Anon\Src;
 
 class cookie_mod {
 

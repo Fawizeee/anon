@@ -1,10 +1,11 @@
 <?php  
 
-    require("stylejson.php");
- 
+
+namespace Anon\Src;
 
 
-    /**
+
+/**
      * Class getReactionUIData: Handles reactions for a message
      */
     class getReactionUIData{

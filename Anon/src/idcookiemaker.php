@@ -1,5 +1,6 @@
 <?php
-use Symfony\Component\Routing\Attribute\Route;
+    namespace Anon\Src;
+
 
 class idcookie{
     public $number;

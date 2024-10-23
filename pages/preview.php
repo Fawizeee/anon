@@ -1,9 +1,8 @@
 
 <?php
-include_once("../module/connection.php");
-include_once "../module/handlebarsTemplate.php";
-include_once "../module/reactioui.php";
 
+require_once '../bootstrap.php';  
+use Anon\Src\{HandlebarTemplate,getReactionUIData};
 session_start();
 if (isset($_GET["id"])) {
   
@@ -19,7 +18,7 @@ if (isset($_GET["id"])) {
 else{
 require dirname(__DIR__) . '\vendor\autoload.php';
 
-$db = new DbConn();
+
 $db = $db->conn();
 if (!$db) {
     // handle database connection error

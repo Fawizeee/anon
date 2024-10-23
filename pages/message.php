@@ -1,12 +1,11 @@
 <?php
 session_start();
 session_write_close();
-require_once "../module/connection.php";
-require_once "../module/idcookiemaker.php";
-require_once "../module/cookie.php";
-include "../module/handlebarsTemplate.php";
 
 
+require_once '../bootstrap.php';
+
+use Anon\Src\{cookie_mod,HandlebarTemplate,idcookie};
 // use Cradle\Handlebars\HandlebarsHandler as Handlebars;
 // require dirname(__DIR__) . '\vendor\autoload.php';
 $templateString = file_get_contents("../public/views/message.hbs");
@@ -14,7 +13,7 @@ $handlebars = new HandlebarTemplate($templateString);
 
 
 
-$db = new DbConn();
+
 $db = $db->db;
 $cookie_mod = new cookie_mod();
 $row="";

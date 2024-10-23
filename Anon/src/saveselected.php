@@ -1,6 +1,7 @@
 <?php
-require("../module/connection.php");
-$db = new DbConn();
+    namespace Anon\Src;
+
+require_once $_SERVER['DOCUMENT_ROOT']."/anon/bootstrap.php";
 $db = $db->db;
 if (isset($_GET) && isset($_GET["selectedid"])) {
 
@@ -18,7 +19,7 @@ if (isset($_GET) && isset($_GET["selectedid"])) {
   $ret = $sql->execute();
   if ($ret) {
     $msg_URl = "$_SERVER[REQUEST_SCHEME]://$_SERVER[SERVER_NAME]/anon/pages/preview";
-    $data = "selectid=$id";
-    echo $msg_URl . "?" . $data;
+    $param = "selectid=$id";
+    echo $msg_URl . "?" . $param;
   }
 }

@@ -1,12 +1,14 @@
 <?php
 
 // userregister.php
+namespace Anon\Src;
+use Anon\Database\Connection;
 
 class UserRegister {
     private $db;
     private $passwordMod;
 
-    public function __construct(DbConn $db, Password_mod $passwordMod) {
+    public function __construct(Connection $db, Password_mod $passwordMod) {
         $this->db = $db->db;
         $this->passwordMod = $passwordMod;
     }
@@ -23,7 +25,7 @@ class UserRegister {
 
         if ($result->fetch_array()) {
             $userAvail = false;
-            throw new Exception("Username taken");
+            throw new \Exception("Username taken");
         }
 
         if ($userAvail) {
@@ -35,10 +37,10 @@ class UserRegister {
                 if ($ret) {
                     return true;
                 } else {
-                    throw new Exception("Error occurred while registering");
+                    throw new \Exception("Error occurred while registering");
                 }
-            } catch (Exception $e) {
-                throw new Exception($e->getMessage());
+            } catch (\Exception $e) {
+                throw new \Exception($e->getMessage());
             }
         }
     }

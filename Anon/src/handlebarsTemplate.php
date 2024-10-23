@@ -1,6 +1,7 @@
 <?php
+
+namespace Anon\Src;
 use Cradle\Handlebars\HandlebarsHandler as Handlebars;
-require dirname(__DIR__) . '\vendor\autoload.php';
 class HandlebarTemplate {
     public $templateString;
     public $handlebars;

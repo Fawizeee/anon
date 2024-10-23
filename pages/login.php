@@ -1,16 +1,12 @@
    
 <?php
   session_start();
-  // INCLUDE SQLITE CONNECTION
-  require("../module/connection.php");
-  //INCLUDE COOKIE MAKER AND INITIALIZER
-  require("../module/cookie.php");
+require_once "../bootstrap.php";
+
+
+use Anon\Src\{cookie_mod,HandlebarTemplate,idcookie,Password_mod,Login,updateUserLoginInfo};
   $cookie_mod = new cookie_mod();
-  require("../module/idcookiemaker.php");
-  require("../module/autologin.php");
-require("../module/password.php");
-include "../module/handlebarsTemplate.php";
-require "../module/updateUserloginInfo.php";
+
 
 $loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "../public/views/login.hbs"));
 $logoutPage = new HandlebarTemplate(templateString:file_get_contents(filename:"../public/views/logout.hbs"));
@@ -18,7 +14,7 @@ $logoutPage->registerPartials("nav",file_get_contents(filename:"../public/views/
 $loginPage->registerPartials("nav",file_get_contents(filename:"../public/views/nav.hbs"));
   
   
-  $db = new DbConn();
+
   $db = $db->db;
   $password_mod = new Password_mod();
   try{
@@ -151,7 +147,7 @@ catch(Exception $e){$message = $e->getMessage();}
         }
         finally{ 
 
-            if ($class=="success"){ header("location:/anon/messages?id=$row[id]");  exit; }
+            if ($class=="success"){ header("location:/anon/messages?id=$updateInfo->id");  exit; }
           
          $data = ["message"=>$message ,"class"=>$class,"isUser"=>$isUser ,"post"=>!$post];
 

@@ -1,5 +1,6 @@
-
 <?php
+    namespace Anon\Src;
+
 class Password_mod{
     public function __construct() {
         

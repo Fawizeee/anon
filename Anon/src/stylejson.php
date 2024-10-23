@@ -1,4 +1,6 @@
 <?php
+    namespace Anon\Src;
+
 class load_style_json{
     public function style(){
         $json = file_get_contents("../public/json/styles.json");

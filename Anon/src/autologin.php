@@ -1,5 +1,5 @@
 <?php
-
+    namespace Anon\Src;
 class Login
 {
     private $db; //mysqli
@@ -20,7 +20,7 @@ class Login
      * @param Password_mod $password_mod
      * @param array $coloumn
      */
-    public function __construct(mysqli $db)
+    public function __construct(\mysqli $db)
     {
 
         $this->db = $db;
@@ -33,7 +33,7 @@ class Login
      * @param string $Coloumn
      * @return bool|mysqli_result
      */
-    public function query(mysqli $db, string $name, string $Coloumn): bool|mysqli_result
+    public function query(\mysqli $db, string $name, string $Coloumn): bool|\mysqli_result
     {
         $query = "
         SELECT
@@ -59,7 +59,7 @@ class Login
      * @param Password_mod|null $password_mod
      * @return array
      */
-    public function authenticate(mysqli_result $result, array $credentials, Password_mod|null $password_mod)
+    public function authenticate(\mysqli_result $result, array $credentials, Password_mod|null $password_mod)
     {
         // verifies credentials are not empty
         if ($password_mod !== null) {
@@ -92,7 +92,7 @@ class Login
             } elseif ($row["id"] == $_COOKIE["userid"]) {
                 return ["isUser" => true, "msg" => "", "row" => $row];
             }
-        } catch (mysqli_sql_exception $e) {
+        } catch (\mysqli_sql_exception $e) {
             //display error
             return ["isUser" => false, "msg" => "Database error: " . $e->getMessage(), "row" => []];
         }

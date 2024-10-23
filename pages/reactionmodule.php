@@ -1,21 +1,23 @@
 <?php
+use Anon\Database\Connection;
+
+require_once '../bootstrap.php';
+
 session_start();
 if (!isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && !$_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest") {
      http_response_code(400);
      header("location:/anon/400");
      exit;
 }
-
-include_once("../module/connection.php");
 class Reactionmodule
 {
      public $reaction_arr = [];
      protected $db;
      protected $dbconn;
 
-     public function __construct()
+     public function __construct(Connection $db)
      {
-          $this->db = new DbConn();
+          $this->db = new $db();
           $this->dbconn = $this->db->db;
           $this->reaction_arr;
 
@@ -63,7 +65,7 @@ if (isset($_GET)) {
 
      if (isset($_GET["uname"]) && isset($_GET["react"]) && isset($_GET["cuser"]) && isset($_GET["Rdata"])) {
 
-          $RM = new Reactionmodule;
+          $RM = new Reactionmodule($db);
 
           $uname = $_GET["uname"];
           $react = $_GET["react"];

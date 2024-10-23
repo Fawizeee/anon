@@ -1,5 +1,5 @@
 <?php 
-use Symfony\Component\Routing\Generator\UrlGenerator;
+    namespace Anon\Src;
 
 
 class Templates{
@@ -10,7 +10,7 @@ private $nameParam;
 public $db;
 public $id_string;
 
-   public function __construct(mysqli $db) {
+   public function __construct(\mysqli $db) {
       $this->db = $db;
       $this->query =  $_SERVER["QUERY_STRING"]; 
       parse_str($this->query,$queryparams);
@@ -93,7 +93,6 @@ if(isset($_SERVER["QUERY_STRING"])){
                if($ret){
               $this->id_string =   isset($_SESSION["userid"])?$_SESSION["userid"]:$this->id_string;
               
-                 include_once("../module/reactioui.php");
                  
                 while($row  = $ret->fetch_array(SQLITE3_ASSOC)){
 

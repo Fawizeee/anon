@@ -1,7 +1,8 @@
 <?php
+    namespace Anon\Src;
 class updateUserLoginInfo{
     private $remember;
-    private $id;
+    public $id;
     private $rem;
     private $name;
     private $userid;
@@ -9,7 +10,7 @@ class updateUserLoginInfo{
     private $addId;
     private $setCookie;
 
-    public function __construct(mysqli $db,cookie_mod $cookie_mod,bool $rem,$userid,$name){
+    public function __construct(\mysqli $db,cookie_mod $cookie_mod,bool $rem,$userid,$name){
         $this->db = $db;
         $this->rem = $rem;
         $this->userid = $userid;
