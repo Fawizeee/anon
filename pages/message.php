@@ -1,6 +1,4 @@
 <?php
-session_start();
-session_write_close();
 
 
 require_once '../bootstrap.php';
@@ -30,15 +28,19 @@ try {
         $userAvail =$row= $result->fetch_array();
         if (isset($userAvail["ID"])) {
 
-            if (isset($_POST["message"])) {
             
-                $id = new idcookie();
-                $id_string = $_SESSION["userid"] ?? $id->makeidcookie();
-                $id_msg = $id->makeidcookie();
+            $id = new idcookie(); 
+            $id_string = $_SESSION["userid"]??$_COOKIE['id']?? $id->makeidcookie();
+            $_SESSION["userid"]= $id_string;
+            $cookie_mod->Make_ckie( ["id"=>$id_string]) ;
+            $id_msg = $id->makeidcookie();
+            session_write_close();
+            
+            if (isset($_POST["message"])) {
                 $message = $_POST["message"];
                 if (empty($message)) {
 
-                    throw new Exception("No message to send");
+                    throw new Exception(message: "No message to send");
 
                 }
 
@@ -73,3 +75,5 @@ $handlebars->registerPartials("nav",file_get_contents(filename:"../public/views/
 
     echo $handlebars->render($data);
 }
+echo $_COOKIE['id']; 
+echo $id_string;

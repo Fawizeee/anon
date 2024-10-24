@@ -97,7 +97,7 @@ class Login
             return ["isUser" => false, "msg" => "Database error: " . $e->getMessage(), "row" => []];
         }
         return [];
-    }
+    }   
     /**
      * Summary of login
      * @param array $credentials

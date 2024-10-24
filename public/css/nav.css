@@ -8,6 +8,8 @@
     position: fixed;
     top:0;
     width:95%;
+    margin-left: 1.25%;
+
   }
 header nav ul {
     list-style: none;

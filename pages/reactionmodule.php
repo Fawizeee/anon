@@ -3,7 +3,7 @@ use Anon\Database\Connection;
 
 require_once '../bootstrap.php';
 
-session_start();
+
 if (!isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && !$_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest") {
      http_response_code(400);
      header("location:/anon/400");

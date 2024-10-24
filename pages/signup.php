@@ -3,9 +3,7 @@
 require_once '../bootstrap.php';
 
 use Anon\Src\{Password_mod,UserRegister,HandlebarTemplate};
-// use Cradle\Handlebars\HandlebarsHandler as Handlebars;
-// require dirname(__DIR__) . '\vendor\autoload.php';
-// database connection 
+
 
 $password_mod = new Password_mod();
 $userRegister = new UserRegister($db,$password_mod);

@@ -9,13 +9,15 @@ class updateUserLoginInfo{
     private $db;
     private $addId;
     private $setCookie;
+    private $db_id;
 
-    public function __construct(\mysqli $db,cookie_mod $cookie_mod,bool $rem,$userid,$name){
+    public function __construct(\mysqli $db,bool $rem,$db_id,$userid,$name){
         $this->db = $db;
         $this->rem = $rem;
+        $this->db_id = $db_id;
         $this->userid = $userid;
         $this->addId=false;
-        $this->setCookie = $cookie_mod;
+       
         $this->name = $name;
     }
     private function remember (){
@@ -33,22 +35,17 @@ class updateUserLoginInfo{
     private function id(){
 
         $this->remember();
-        if(!$this->userid){
-            $this->id = uniqid(mt_rand(10,10));
-            $_SESSION["userid"] =  $this->id;
-            $this->setCookie->Make_ckie(["userid"=>$this->id]);
-            $this->addId = true;
-        return  "UPDATE INFO SET ID =?,remember =? WHERE USERNAME =?;";
+        if(!$this->db_id){
+            $this->id = $this->userid;
         }
         else{
-            $this->id=$this->userid;
+            $this->id=$this->db_id;
  
        return "UPDATE INFO SET remember=? WHERE USERNAME =?";
 ;
    } }
 
     public function update(){
-        $this->setCookie->Make_ckie(["userid"=> $this->id]);
         $query = $this->id();
         $stmt = $this->db->prepare( $query);
         if ($this->addId){

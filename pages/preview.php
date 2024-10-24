@@ -3,7 +3,7 @@
 
 require_once '../bootstrap.php';  
 use Anon\Src\{HandlebarTemplate,getReactionUIData};
-session_start();
+
 if (isset($_GET["id"])) {
   
     $_SESSION["id"] = $_GET["id"];
@@ -27,14 +27,14 @@ if (!$db) {
 }
 if(!isset($_GET["selectid"])){
 $id = $_SESSION["id"];
-$userid =     $_SESSION["user"];
+$user =     $_SESSION["user"];
 $multi =   $_SESSION["multi"];
 
 // use prepared statement to prevent SQL injection
 $stmt;
 if($multi){
 $stmt = $db->prepare("SELECT * FROM MESSAGES WHERE SENDERID = ? AND USERID= ?");
-$stmt->bind_Param("ss", $id,$userid);
+$stmt->bind_Param("ss", $id,$user);
 
 
 }

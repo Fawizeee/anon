@@ -1,11 +1,10 @@
    
 <?php
-  session_start();
+
 require_once "../bootstrap.php";
 
 
-use Anon\Src\{cookie_mod,HandlebarTemplate,idcookie,Password_mod,Login,updateUserLoginInfo};
-  $cookie_mod = new cookie_mod();
+use Anon\Src\{HandlebarTemplate,idcookie,Password_mod,Login,updateUserLoginInfo};
 
 
 $loginPage = new HandlebarTemplate(templateString: file_get_contents(filename: "../public/views/login.hbs"));
@@ -21,7 +20,7 @@ $loginPage->registerPartials("nav",file_get_contents(filename:"../public/views/n
       //  var_dump($_COOKIE);exit;
         // autologin if possible
         if(isset($_SESSION)&&isset($_SESSION["loggedin"])){
-          echo $logoutPage->render(["id"=>$_SESSION["userid"]]);
+          echo $logoutPage->render(["id"=>$userid]);
           exit;
         }
         if(isset($_COOKIE)&&!isset($_SESSION["loggedin"]))
@@ -59,7 +58,7 @@ $loginPage->registerPartials("nav",file_get_contents(filename:"../public/views/n
     
 catch(Exception $e){$message = $e->getMessage();}
 
-    $newcookie = new idcookie();
+
     // VALUE TO KNOW WHEN USERNAME IS AVAILABLE
   
        $isUser=  false;
@@ -69,15 +68,8 @@ catch(Exception $e){$message = $e->getMessage();}
        $message='';
        $class = "";
        $user_ckie;
-       if(!isset($_SESSION["userid"])){
-        $user_ckie = $newcookie->makeidcookie();
-      //  $cookie_mod->Make_ckie(["userid"=> $user_ckie]);
-      //  $_SESSION["userid"] = $user_ckie;
 
-       }
-      
 
-    //   INITIALIZES DB CONNECTION
     
     try{
         // IF THERES A POST REQUEST CONTAINING NAME AND PASSWORD
@@ -109,7 +101,7 @@ catch(Exception $e){$message = $e->getMessage();}
                 $_SESSION["loggedin"] = true;
                 $_SESSION["name"] = $name;  
         
-          $updateInfo = new updateUserLoginInfo($db,$cookie_mod,$rem,$row["id"],$row["username"]);
+          $updateInfo = new updateUserLoginInfo($db,$rem,$row["id"],$userid,$row["username"]);
            $updated = $updateInfo->update();
     if ($updateInfo){
 
@@ -122,13 +114,12 @@ catch(Exception $e){$message = $e->getMessage();}
             //IF THERES AN ID ALREADY PUT IN IT IN THE COOKIE
             if($row["id"])
             { 
-                //  $cookie_mod->make_ckie(["userid"=> $row["id"]]); 
                  $_SESSION["userid"] =  $row["id"];
                   $cookie_mod->Make_ckie(["userid"=> $row['id']]);
 
                  $class = "success";
                   
-                 $user_ckie=$row["username"];var_dump($user_ckie,$canlogin);
+                //  $user_ckie=$row["username"];
                             }
                    
         }
@@ -153,10 +144,6 @@ catch(Exception $e){$message = $e->getMessage();}
 
 session_write_close(); 
 echo $loginPage->render($data);
-
-
-
-
 
 $db->close();
         }
