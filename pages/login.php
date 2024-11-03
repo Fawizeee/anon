@@ -98,9 +98,10 @@ catch(Exception $e){$message = $e->getMessage();}
             //IF PASSWORD IS CORRECT LOGIN
           if($canlogin){
                 $isUser = true;
+                $userid = uniqid(2);
                 $_SESSION["loggedin"] = true;
                 $_SESSION["name"] = $name;  
-        
+                $_SESSION["userid"] = $userid;
           $updateInfo = new updateUserLoginInfo($db,$rem,$row["id"],$userid,$row["username"]);
            $updated = $updateInfo->update();
     if ($updateInfo){

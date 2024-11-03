@@ -47,11 +47,7 @@ class Chat implements MessageComponentInterface
     {
         $this->clients->detach($conn);
         unset($this->users[$conn->resourceId]);
-        unset($this->subscriptions[$conn->resource $_SERVER['DOCUMENT_ROOT'].'/anon/bootstrap.php';
-_SERVER['DOCUMENT_ROOT'].'/anon/bootstrap.php';
-_SERVER['DOCUMENT_ROOT'].'/anon/bootstrap.php';
-_SERVER['DOCUMENT_ROOT'].'/anon/bootstrap.php';
-]);
+        unset($this->subscriptions[$conn->resourceId]);
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)

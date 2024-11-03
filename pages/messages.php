@@ -29,8 +29,8 @@ $tempClass->checkUser();
 $Adata = [... $tempClass->dashboard(),"message"=>[...$tempClass->reaction()["message"]],"isUser"=>$tempClass->dashboard()["isUser"]];
 
 echo $handlebars->render($Adata);
-               
 
 
 
+    var_dump($_SESSION);
           

@@ -81,5 +81,6 @@ else if(isset($_GET)&&isset($_GET["selectid"])){
   }
   
     }}
+    var_dump($_SESSION);
 
 

@@ -35,8 +35,10 @@ class updateUserLoginInfo{
     private function id(){
 
         $this->remember();
-        if(!$this->db_id){
+        if(is_null($this->db_id)){  
             $this->id = $this->userid;
+            $this->addId=1;
+     return  "UPDATE INFO SET ID =?,remember =? WHERE USERNAME =?;";
         }
         else{
             $this->id=$this->db_id;
