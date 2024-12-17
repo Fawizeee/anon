@@ -1,26 +1,17 @@
-<head>
-	<html lang="en">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="public/css/messages.css" rel="stylesheet">
-	<link href="/anon/public/css/messages.css" rel="stylesheet">
 
-	<!-- Font Awesome 5 -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-	<!-- Font Awesome 4 -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- Font Awesome 6 -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
 {{#if message}}
+
 {{#each message}}
+
 <div class="message-container">
+
 	<div class="logo"> <img src="/anon/public/pic/anon.png" /></div>
+
 	<div class="inscription" onclick="selectid(this)" data-msgid={{MSGID}} data-selected=0>Anon Message</div>
+
 	<div class="id-time"><span>ID:</span><span data-user={{USERID}} data-senderid="{{SENDERID}}"
-			onclick="preview(this,1)">{{MSGID}} </span><span>|Time:{{CTIME}}</span></div>
+			onclick="preview(this,1)">{{MSGID}} </span><span>|Time:{{CTIME}}</span>
+	</div>
 	<div class="message" data-msgid={{MSGID}} data-user={{USERID}} onclick="preview(this,0)"> {{{format MSG}}}</div>
 	<div class="reactions">
 		{{#each reactlist}}
@@ -66,36 +57,7 @@
 <script src="public/js/preview.js"></script>
 {{/if}}
 
-{{#if preview}}
 
-<div class="message-container">
-	<div class="logo"> <img src='/anon/public/pic/anon.png' /></div>
-	<div class="inscription" onclick="selectid(this)" data-msgid={{MSGID}} data-selected=0>Anon Message</div>
-	<div class="id-time" data-user={{USERID}} data-senderid="{{SENDERID}}">ID: {{MSGID}}| Time:{{CTIME}}</div>
-	<div class="message" data-msgid={{MSGID}} data-user={{USERID}} onclick="preview(this,0)"> {{{format MSG}}}</div>
-	<div class="reactions">
-		{{#each reactlist}}
-		{{#if reacted }}
-		<div id={{msgid}}{{key}} class='reaction' onclick=reactor(this) data-id={{msgid}} data-name="{{name}}"
-			data-cuser="{{uname}}" data-react={{key}} data-reacted='true'>
-			<i class="{{fa}}" style="color:{{keyclr}};"></i>
-			<p> {{length}}</p>
-
-		</div>
-		{{else}}
-		<div id={{msgid}}{{key}} class='reaction' onclick=reactor(this) data-id={{msgid}} data-name={{name}}
-			data-cuser={{uname}} data-react={{key}} data-reacted='false'>
-			<i class="{{fa}}" style="color:white;"></i>
-
-			<p> {{length}}</p>
-
-		</div>
-
-		{{/if}}
-		{{/each}}
-	</div>
-</div>
-{{/if}}
 <script src="/anon/public/js/httpreq.js"></script>
 <script>
 	function Close(e) {

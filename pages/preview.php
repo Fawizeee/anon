@@ -3,7 +3,7 @@
 
 require_once '../bootstrap.php';  
 use Anon\Src\{HandlebarTemplate,getReactionUIData};
-
+(array) $data = [];
 if (isset($_GET["id"])) {
   
     $_SESSION["id"] = $_GET["id"];
@@ -49,38 +49,36 @@ $retexe =$stmt->execute();
 while ($row = $ret->fetch_array(SQLITE3_ASSOC)) {
   $reactions = new getReactionUIData($row["USERID"], $row["SENDERID"], $row["MSGID"], ["FUNNY" => $row["FUNNY"], "SAD" => $row["SAD"], "BORING" => $row["BORING"], "CRAZY" => $row["CRAZY"]]);
   $reactlist = $reactions->getReactionUIData();
-  $data = [...$row, "reactlist" => $reactlist,"preview"=>true];
+  $data [] = [...$row, "reactlist" => $reactlist];
   // use a template engine to render the HTML template
-  $handlebars= new HandlebarTemplate(file_get_contents("../public/views/reaction.hbs"));
-  $handlebars->registerHelpers("format");
-  $handlebars->registerPartials("nav",file_get_contents(filename:"../public/views/nav.hbs"));
-   $template = $handlebars->compile();
-  echo $handlebars->render( $data);
+
 }
 
 }
 
 else if(isset($_GET)&&isset($_GET["selectid"])){
     $selectedid = (string)$_GET["selectid"];
-    $query = "SELECT * FROM MESSAGES WHERE MSGID IN (SELECT SELECTED FROM SELECTTABLE WHERE ID =?)";
+    $query = "SELECT * FROM MESSAGES WHERE MSGID IN (SELECT SELECTID FROM SELECTTABLE WHERE ID =?)";
     $stmt = $db->prepare($query);
     $stmt->bind_param("s",$selectedid);
     $retexe =$stmt->execute();
     $ret = $stmt->get_result();
 
-    while ($row = $ret->fetch_array(SQLITE3_ASSOC)) {
+
+    while ($row = $ret->fetch_array(SQLITE3_ASSOC)) { 
       $reactions = new getReactionUIData($row["USERID"], $row["SENDERID"], $row["MSGID"], ["FUNNY" => $row["FUNNY"], "SAD" => $row["SAD"], "BORING" => $row["BORING"], "CRAZY" => $row["CRAZY"]]);
       $reactlist = $reactions->getReactionUIData();
-      $data = [...$row, "reactlist" => $reactlist,"preview"=>true];
-      // use a template engine to render the HTML template
-      $handlebars= new HandlebarTemplate(file_get_contents("../public/views/reaction.hbs"));
-      $handlebars->registerHelpers("format");    
+      $data []= [...$row, "reactlist" => $reactlist,];
 
-       $template = $handlebars->compile();
-      echo $handlebars->render( $data);
   }
   
     }}
-    var_dump($_SESSION);
+    $PreviewtemplateString = file_get_contents("../public/views/preview.hbs");
+    $handlebars = new HandlebarTemplate($PreviewtemplateString);
+    $ReactiontemplateString = file_get_contents("../public/views/reaction.hbs");
+    $handlebars->registerPartials("reaction",$ReactiontemplateString);
+    $handlebars->registerHelpers("format");    
 
-
+     $template = $handlebars->compile();
+   
+    echo $handlebars->render( ["message"=>$data]);

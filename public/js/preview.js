@@ -54,7 +54,7 @@ async function saveSelected(e) {
    const selectedidjson = JSON.stringify(selectids);
 var link;
 
-   await   fetch(`/anon/anon/src/saveselected?selectedid=${selectedidjson}`).then(Response => Response.text()).then((data) => {
+   await   fetch(`/anon/anon/src/saveselected?selectedid=${selectedidjson}`).catch((err)=>alert(err)).then((Response)=> Response.text()).then((data) => {
 
      link = data;
    })

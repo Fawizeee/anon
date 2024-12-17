@@ -47,10 +47,10 @@ class Reactionmodule
      function updateRctn($reaction, $reactionARR, $user)
      {
           $sql = "UPDATE MESSAGES
-      SET $reaction= ?
-      WHERE
-      MSGID = ?
-      ";
+                    SET $reaction= ?
+                      WHERE
+                     MSGID = ?
+                      ";
           $stmt = $this->dbconn->prepare($sql);
           $stmt->bind_param("ss", $reactionARR, $user);
           $stmt->execute();

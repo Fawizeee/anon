@@ -1,5 +1,6 @@
 <?php
     require 'bootstrap.php';
+
     $db= $db->db;
         try {
             $message  =$db->prepare(
@@ -35,17 +36,15 @@
                 )"
             );
 
-            $Ctable->execute();
-            $ret = $Ctable->get_result();
-           $message->execute();
-           $retm = $message->get_result();
+          $ret =  $Ctable->execute();
+          $retm = $message->execute();
            $sitExec = $SelectIDTable->execute();
 
 
             if ($ret && $retm && $sitExec) {
-                return true;
+                echo "done";
             } else {
-                return false;
+                echo $SelectIDTable->execute();
             }
         } catch (\Exception $e) {
             echo $e->getMessage();

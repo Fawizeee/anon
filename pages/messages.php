@@ -32,5 +32,3 @@ echo $handlebars->render($Adata);
 
 
 
-    var_dump($_SESSION);
-          
