@@ -1,0 +1,41 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link rel="stylesheet" href="public/css/dashboard.css">
+</head>
+{{#if isUser}}
+     <div class="dashboard">
+        <h1>{{id}}</h1>
+        <div class="links">
+            <div class="link-item">
+                <div class="link-title">link for messaging</div>
+                <a href="{{msgURL}}" target="_blank">{{msgURL}}</a>
+                <span class="c">copy</span>
+            </div>
+            <div class="link-item">
+                <div class="link-title">Link for viewing</div>
+                <a href={{viewURL}} target="_blank"> {{viewURL}}</a>
+                <span class="c">copy</span>
+            </div>
+        </div>
+    <p><a href="/anon/pages/logout"><b>Logout</b></a> </p>
+
+    </div>
+{{/if}}
+<script src="public/js/copy.js"></script>
+<script>
+ const logout = ()=>{
+   const xhr = new XMLHttpRequest();
+   xhr.onload= ()=>{
+    if(xhr.status === 200){
+      console.log (this.responseText)
+   }
+   }
+   xhr.open("GET","/anon/pages/logout")
+   xhr.send()
+  }
+</script>

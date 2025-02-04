@@ -1,0 +1,115 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #121212; /* Dark background */
+	margin: 0;
+	color: #ffffff; /* White text */
+}
+
+.message-container {
+	background: #1e1e1e; /* Darker container background */
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	margin: 0 auto;
+	margin-bottom: 20px; /* Space between messages */
+	margin-top: 60px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 2px solid #007BFF; /* Blue border */
+	max-width: 700px;
+	max-height: 400px;
+}
+
+.logo {
+	width: 50px;
+	height: 50px;
+	background-image: url("/anon/public/pic/anon.png");
+	border-radius:50%;
+	background-color: #007BFF; /* Blue logo */
+	margin-bottom: 30px;
+}
+	.logo img{
+		width:80%;
+		height: 80%;
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+	
+	
+
+.inscription {
+	color: #ffffff; /* White text for inscription */
+	margin-bottom: 10px;
+}
+.message {
+	margin: 10px 0;
+	padding: 10px;
+	border-left: 4px solid #007BFF; /* Blue left border */
+	width: 80%;
+	max-width: 500px;
+	text-wrap: wrap;
+	overflow-wrap: break-word;
+	overflow-y: scroll;
+	scrollbar-width:0;
+	scrollbar-color:green ;
+	
+}
+::-webkit-scrollbar{
+	display: none;
+}
+.id-time {
+	font-size: 12px;
+	color: #808080; /* Gray text for ID and time */
+}
+.reactions {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	margin-top: 10px;
+}
+.reaction {
+	width:10%;
+	display: flex;
+	justify-content: space-around;
+	cursor: pointer;
+	color: #007BFF; /* Blue color for reactions */
+	font-weight: bold;
+}
+.reaction i{
+	margin-top:5px;
+	margin-right: 5px;
+}
+#saveselected{
+	height:5em;
+	width :5em;
+	border-radius: 50%;
+	content:"save";
+	display: none;
+	position: fixed;
+	left:70vw;
+	top:70vh;
+	background: #007BFF;
+	align-content: center;
+	text-align: center;
+}
+#promptCon{
+	width:70vw;
+	height: 40vh;
+	max-width: 500vw;
+	z-index: 1;
+	display: none;
+	position: fixed;
+	top:15vh;
+	left:15vw;
+	background: #121212;
+	font-size: small;
+	text-align: center;
+	color:#007BFF;
+}
+#prompt{
+	margin-top: 40%;
+	margin-bottom:10% ;
+	border: 2px solid grey;
+}

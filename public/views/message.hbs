@@ -1,0 +1,87 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      /* add some basic styling to make it look decent */
+      body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            margin: 0;
+            display: block;
+            height: 100vh;
+            color: #ffffff; /* White text */
+background-image: url("/anon/public/pic/bg.png");
+
+      }
+      form {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #333; /* dark background */
+        border: 1px solid #444; /* dark border */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      textarea {
+        width: 100%;
+        height: 50%;
+        max-height: 500px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        background-color: #444; /* dark background */
+        color: #fff; /* white text */
+        resize: vertical;
+      }
+      input[type="submit"] {
+        background-color: #337ab7; /* blue background */
+        color: #fff; /* white text */
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      .message {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #333; /* dark background */
+        border: 1px solid #444; /* dark border */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      .message p {
+        font-size: 16px;
+        color: #fff; /* white text */
+        margin-bottom: 20px;
+      }
+      .message p:before {
+        font-family: FontAwesome;
+        content: "\f075"; /* speech bubble icon */
+        margin-right: 10px;
+        color: #337ab7; /* blue color */
+      }
+    </style>
+</head>
+<body>
+  {{> nav}}
+  <form method="POST" action={{action}}>
+    <textarea type="textarea" maxlength="255" name="message" value=""></textarea>
+    <input type="submit" value="submit" />
+    <i class="fas fa-paper-plane" aria-hidden="true"></i> <!-- send icon -->
+  </form>
+  <div id="message" class="message">
+    {{#if message}}
+      <p>{{message}}</p>
+      <i class="fas fa-comment" aria-hidden="true"></i> <!-- comment icon -->
+    {{else}}
+      <p>write an anonymous message to {{name}}</p>
+      <i class="fas fa-pencil-alt" aria-hidden="true"></i> <!-- pencil icon -->
+    {{/if}}
+  </div>
+</body>

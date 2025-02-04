@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="public/css/signup.css">
+
+</head>
+
+<body>
+        {{> nav}}
+
+    <form method="POST" action="signup">
+
+        <div class="signup-container">
+            <h2>Signup</h2>
+            <input type="text" name="name" id="username" placeholder="Username" required>
+            <input type="password" name="pword" id="password" placeholder="Password" oninput="passVal(this)" required>
+            <div id "ValidCon">
+                <p id="passValid">Must contain 6 characters which must include alphabets and numbers</p>
+            </div>
+            <button type="submit" value="submit"> Submit </button>
+
+
+        <div id="message" class = {{status}} >
+
+            {{#if message}}
+            {{message}}
+            {{/if}}
+        </div>
+            <p id="rLogin"> Already have an account? <a href="/anon/login"> Login now <i class="bi bi-arrow-right"></i></a></p>
+        </div>
+        </div>
+    </form>
+    <script>
+        function submitForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+            // Simple validation
+            if (username === '' || password === '') {
+                messageDiv.textContent = 'Please fill in all fields.';
+                messageDiv.className = 'message'; // Default error style
+            } else {
+                // Simulate a successful signup
+                messageDiv.textContent = 'Signup successful!';
+                messageDiv.className = 'message success'; // Success style
+            }
+        }
+    </script>
+    <script>
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/;
+        let submitButton = document.getElementById("submit");
+
+        function passVal(e) {
+            var password = e.value;
+            if (passwordRegex.test(password)) {
+                document.getElementById("passValid").style.color = "#93c094";
+                submitButton.disabled = false; // enable the submit button
+            } else {
+                document.getElementById("passValid").style.color = "red";
+                submitButton.disabled = true; // disable the submit button
+            }
+        }
+
+    </script>
+</body>
+
+</html>

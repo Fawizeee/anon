@@ -1,0 +1,66 @@
+
+{{#if message}}
+
+{{#each message}}
+
+<div class="message-container">
+
+	<div class="logo"> <img src="/anon/public/pic/anon.png" /></div>
+
+	<div class="inscription" onclick="selectid(this)" data-msgid={{MSGID}} data-selected=0>Anon Message</div>
+
+	<div class="id-time"><span>ID:</span><span id="id"data-user={{USERID}} data-senderid="{{SENDERID}}"
+			onclick="preview(this,1)">{{MSGID}} </span><span>|Time:{{CTIME}}</span>
+	</div>
+	<div class="message" data-msgid={{MSGID}} data-user={{USERID}} onclick="preview(this,0)"> {{{format MSG}}}</div>
+	<div class="reactions">
+		{{#each reactlist}}
+		{{#if reacted }}
+		<div id={{msgid}}{{key}} class='reaction' onclick=reactor(this) data-id={{msgid}} data-name="{{name}}"
+			data-cuser="{{uname}}" data-react={{key}} data-reacted='true'>
+			<i class="{{fa}}" style="color:{{keyclr}};"></i>
+			<p> {{length}}</p>
+
+		</div>
+		{{else}}
+		<div id={{msgid}}{{key}} class='reaction' onclick=reactor(this) data-id={{msgid}} data-name={{name}}
+			data-cuser={{uname}} data-react={{key}} data-reacted='false'>
+			<i class="{{fa}}" style="color:white;"></i>
+
+			<p> {{length}}</p>
+
+		</div>
+
+		{{/if}}
+		{{/each}}
+	</div>
+</div>
+{{/each}}
+<div id="promptCon">
+	<div onclick="Close(this)">
+		<p>
+			close
+		</p>
+	</div>
+	<div>
+		<h2>MESSAGE</h2>
+	</div>
+	<div id="prompt">
+		THIS IS THE link
+	</div>
+	<span class="c">copy</span>
+</div>
+<script src="public/js/copy.js"></script>
+{{#if isUser}}
+<div onclick="saveSelected(this)" id="saveselected"><span>0</span><span>saveSelected</span></div>
+{{/if}}
+<script src="public/js/preview.js"></script>
+{{/if}}
+
+
+<script src="/anon/public/js/httpreq.js"></script>
+<script>
+	function Close(e) {
+		e.parentNode.style.display = "none";
+	}
+</script>

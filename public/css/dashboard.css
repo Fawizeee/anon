@@ -1,0 +1,42 @@
+.dashboard {
+  background: #3c3c3c; /* Darker background for the dashboard */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center; /* Centering text */
+  max-width: 700px;
+  height: fit-content;
+  margin:0 auto;
+  margin-top: 2em;
+}
+h1 {
+  color: #ffffff; /* White color for the heading */
+}
+.links {
+  margin-top: 20px;
+}
+.link-item {
+  width:90%;
+  margin-bottom: 10px;
+  border: 1px solid #007BFF; /* Blue border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px; /* Padding inside the border */
+  display: inline-block; /* Allowing the border to wrap around the content */
+  background-color: #4c4c4c; /* Dark background for link items */
+}
+.link-title {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #ffffff; /* White color for link titles */
+}
+a {
+  text-decoration: none;
+  color: #007BFF; /* Blue color for links */
+}
+a:hover {
+  text-decoration: underline;
+  color: #00BFFF; /* Lighter blue on hover */
+}
+span {
+  color: #cccccc; /* Light gray for descriptions */
+}
