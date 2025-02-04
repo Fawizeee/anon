@@ -9,7 +9,7 @@
 
 	<div class="inscription" onclick="selectid(this)" data-msgid={{MSGID}} data-selected=0>Anon Message</div>
 
-	<div class="id-time"><span>ID:</span><span data-user={{USERID}} data-senderid="{{SENDERID}}"
+	<div class="id-time"><span>ID:</span><span id="id"data-user={{USERID}} data-senderid="{{SENDERID}}"
 			onclick="preview(this,1)">{{MSGID}} </span><span>|Time:{{CTIME}}</span>
 	</div>
 	<div class="message" data-msgid={{MSGID}} data-user={{USERID}} onclick="preview(this,0)"> {{{format MSG}}}</div>

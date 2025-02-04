@@ -92,7 +92,7 @@ try {
     //IF PASSWORD IS CORRECT LOGIN
     if ($canlogin) {
       $isUser = true;
-      $userid = uniqid(mt_rand(1,9));
+      $userid = uniqid(mt_rand(1, 9));
       $_SESSION["loggedin"] = true;
       $_SESSION["name"] = $name;
       $_SESSION["userid"] = $userid;

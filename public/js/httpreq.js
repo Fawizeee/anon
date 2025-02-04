@@ -1,7 +1,7 @@
 var conn = new WebSocket(`ws://${window.location.hostname}:8080`);
 
 var searchParams = new URLSearchParams(window.location.search);
-var room = searchParams.get("id");
+var room = searchParams.get("id")|| document.getElementById("id").dataset.user;
 var rct_clr = [];
 
 fetch("/anon/public/json/styles.json").then(Response => Response.text()).then((data) => {
